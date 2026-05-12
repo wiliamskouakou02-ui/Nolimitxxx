@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#050608">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NOLIMITXX">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="https://via.placeholder.com/192x192/C9A84C/000000?text=NL">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOLIMITXX — No Limits. Only Results.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --gold:#C9A84C;--gl:#E8CC7A;--gd:#9A7A30;
+  --black:#050608;--s:#0C0D10;--card:#111318;
+  --b:#1E2028;--text:#F5F0E8;--m:#4A4D58;--ml:#6B6F7D;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+.bc{font-family:'Barlow Condensed',sans-serif}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gd);border-radius:4px}
+@keyframes shimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes scanline{0%{top:-100%}100%{top:200%}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.1)}50%{box-shadow:0 0 40px rgba(201,168,76,.35)}}
+.gt{background:linear-gradient(90deg,var(--gd),var(--gl),var(--gold),var(--gl),var(--gd));background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite}
+.fu{animation:fadeUp .55s cubic-bezier(.16,1,.3,1) forwards}
+.fu1{animation:fadeUp .55s .1s cubic-bezier(.16,1,.3,1) both}
+.fu2{animation:fadeUp .55s .2s cubic-bezier(.16,1,.3,1) both}
+.fu3{animation:fadeUp .55s .3s cubic-bezier(.16,1,.3,1) both}
+.fu4{animation:fadeUp .55s .4s cubic-bezier(.16,1,.3,1) both}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,6,8,.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,168,76,.1)}
+.nlogo{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;letter-spacing:4px;cursor:pointer}
+.nlinks{display:flex;gap:28px;align-items:center}
+.nlinks a{color:var(--ml);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;letter-spacing:.5px}
+.nlinks a:hover{color:var(--gold)}
+.ncta{background:linear-gradient(135deg,var(--gd),var(--gold),var(--gl));color:#000;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;padding:10px 22px;border-radius:8px;transition:transform .15s,opacity .2s}
+.ncta:hover{opacity:.88;transform:scale(.97)}
+@media(max-width:640px){.nlinks{display:none}nav{padding:13px 16px}}
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 80px;position:relative;overflow:hidden;text-align:center}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 85% 80%,rgba(201,168,76,.04) 0%,transparent 60%)}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black,transparent)}
+.hscan{position:absolute;left:0;right:0;height:100px;background:linear-gradient(180deg,transparent,rgba(201,168,76,.025),transparent);animation:scanline 7s linear infinite;pointer-events:none}
+.heyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.28);border-radius:50px;padding:6px 16px;margin-bottom:22px;font-size:11px;color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+.htitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(72px,14vw,140px);font-weight:900;line-height:.88;letter-spacing:2px;margin-bottom:6px}
+.hsub{font-size:clamp(14px,2vw,16px);color:var(--ml);max-width:480px;margin:0 auto 36px;line-height:1.65;letter-spacing:.3px}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.bp{background:linear-gradient(135deg,var(--gd),var(--gold),var(--gl));color:#000;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:3px;padding:15px 38px;border-radius:10px;transition:transform .15s,opacity .2s;position:relative;overflow:hidden}
+.bp::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-100%);transition:transform .4s}
+.bp:hover::after{transform:translateX(100%)}
+.bp:active{transform:scale(.97)}
+.bs{background:transparent;color:var(--text);border:1px solid var(--b);cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;padding:15px 28px;border-radius:10px;transition:all .2s}
+.bs:hover{border-color:var(--gold);color:var(--gold)}
+.hstats{display:flex;gap:44px;justify-content:center;margin-top:60px;padding-top:36px;border-top:1px solid var(--b);flex-wrap:wrap}
+/* SECTIONS */
+section{padding:96px 20px;max-width:1080px;margin:0 auto}
+.slabel{font-size:11px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
+.stitle{font-family:'Barlow Condensed',sans-serif;font-size:clamp(34px,5vw,54px);font-weight:900;line-height:1;letter-spacing:1px;margin-bottom:14px}
+.sdiv{width:44px;height:2px;background:linear-gradient(90deg,var(--gd),var(--gold));margin:20px 0;border-radius:2px}
+.ssub{font-size:14px;color:var(--ml);max-width:500px;line-height:1.7}
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--b);border-radius:18px;transition:border-color .2s,transform .2s}
+.cardg{background:linear-gradient(135deg,var(--s),var(--card));border:1px solid rgba(201,168,76,.18);border-radius:18px}
+/* LEVEL BADGE */
+.lbadge{display:inline-block;border-radius:50px;padding:3px 10px;font-size:10px;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.lbeg{background:rgba(76,232,160,.12);color:#4CE8A0;border:1px solid rgba(76,232,160,.3)}
+.lint{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.lpro{background:rgba(232,76,76,.12);color:#E84C4C;border:1px solid rgba(232,76,76,.3)}
+/* PAYWALL */
+#pw{position:fixed;inset:0;z-index:2000;background:rgba(5,6,8,.96);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+#pw.on{display:flex;animation:fadeIn .3s ease}
+.pwbox{background:var(--card);border:1px solid rgba(201,168,76,.28);border-radius:22px;padding:36px 28px;max-width:440px;width:100%;text-align:center;animation:fadeUp .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;margin:auto}
+.pwbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gd),var(--gl),var(--gd))}
+.pwclose{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--m);cursor:pointer;font-size:20px;transition:color .2s}
+.pwclose:hover{color:var(--text)}
+.pwstep{display:flex;align-items:flex-start;gap:13px;background:var(--s);border:1px solid var(--b);border-radius:13px;padding:15px;margin-bottom:10px;text-align:left}
+.snum{width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,var(--gd),var(--gold));color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pmeth{flex:1;padding:13px 8px;border-radius:11px;border:1px solid var(--b);background:var(--s);cursor:pointer;transition:all .2s;text-align:center;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif}
+.pmeth:hover{transform:scale(1.03)}
+.cin{background:var(--s);border:1px solid var(--b);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;letter-spacing:4px;padding:13px;width:100%;text-align:center;outline:none;transition:border-color .2s;font-weight:600}
+.cin:focus{border-color:var(--gold)}
+.vbtn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gd),var(--gold),var(--gl));color:#000;border:none;border-radius:12px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:3px;margin-top:14px;transition:transform .15s}
+.vbtn:active{transform:scale(.97)}
+/* APP */
+#app{display:none;min-height:100vh}
+#app.on{display:block}
+.anav{position:sticky;top:0;z-index:500;background:rgba(5,6,8,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--b);display:flex;overflow-x:auto;scrollbar-width:none}
+.anav::-webkit-scrollbar{display:none}
+.atab{flex-shrink:0;padding:15px 18px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--m);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.atab.on{color:var(--gold);border-bottom-color:var(--gold)}
+.atab:hover:not(.on){color:var(--text)}
+.ac{max-width:860px;margin:0 auto;padding:28px 16px 80px}
+/* INPUT */
+input,select,textarea{background:var(--s);border:1px solid var(--b);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;padding:11px 14px;font-size:14px;width:100%;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--gold)}
+/* CHIP */
+.chip{display:inline-flex;align-items:center;border-radius:50px;padding:7px 14px;font-size:12px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;font-weight:500;border:1px solid}
+/* WORKOUT MODAL */
+#wm{position:fixed;inset:0;z-index:3000;background:var(--black);display:none;flex-direction:column;overflow-y:auto}
+#wm.on{display:flex;animation:fadeIn .25s ease}
+/* REST */
+#ro{position:fixed;inset:0;z-index:4000;background:rgba(5,6,8,.97);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#ro.on{display:flex;animation:fadeIn .2s ease}
+#rc{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;color:var(--gold);line-height:1;animation:pulse 1s infinite}
+/* PROG CARDS */
+.pgcard{background:var(--card);border:1px solid var(--b);border-radius:18px;padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.pgcard:hover{transform:translateY(-3px)}
+/* LANDING PROG PREVIEW */
+.ppcard{flex-shrink:0;width:210px;background:var(--card);border:1px solid var(--b);border-radius:16px;padding:18px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.ppcard:hover{border-color:var(--gold)}
+.pblur{position:absolute;inset:0;backdrop-filter:blur(5px);background:rgba(5,6,8,.6);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
+/* EXERCISE ROW */
+.exrow{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--b)}
+.exrow:last-child{border-bottom:none}
+.exnum{width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--gold);flex-shrink:0;margin-top:2px}
+/* FOOD */
+.fitem{padding:11px 14px;border-bottom:1px solid var(--b);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.fitem:last-child{border-bottom:none}
+.fitem:hover{background:var(--s)}
+/* TAB PANELS */
+.tp{display:none}
+.tp.on{display:block;animation:fadeIn .28s ease}
+/* FEATURE GRID */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:52px}
+.fcard{background:var(--card);border:1px solid var(--b);border-radius:18px;padding:26px;position:relative;overflow:hidden;transition:border-color .3s,transform .2s;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease,border-color .3s}
+.fcard:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px)}
+.flock{position:absolute;top:14px;right:14px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:50px;padding:3px 9px;font-size:10px;color:var(--gold);letter-spacing:1.5px;font-family:'DM Sans'}
+/* PRICING */
+.pricebox{background:var(--card);border:1px solid rgba(201,168,76,.4);border-radius:22px;padding:30px 26px;max-width:400px;margin:48px auto 0;animation:glow 3s infinite}
+/* TESTI */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:44px}
+.tcard{background:var(--card);border:1px solid var(--b);border-radius:16px;padding:22px;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+/* ONBOARDING */
+#onb{display:none;position:fixed;inset:0;z-index:5000;background:var(--black);overflow-y:auto}
+#onb.on{display:flex;flex-direction:column;animation:fadeIn .3s ease}
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid rgba(201,168,76,.35);border-radius:50px;padding:11px 22px;font-size:13px;color:var(--gold);z-index:9999;animation:fadeIn .3s ease;white-space:nowrap;pointer-events:none}
+footer{background:var(--s);border-top:1px solid var(--b);padding:44px 20px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nlogo bc gt">NOLIMITXX</div>
+  <div class="nlinks">
+    <a href="#features">Fonctionnalités</a>
+    <a href="#programs">Programmes</a>
+    <a href="#pricing">Tarif</a>
+  </div>
+  <button class="ncta" onclick="openPW()">COMMENCER — 10 000 FCFA</button>
+</nav>
+
+<!-- LANDING -->
+<div id="landing">
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hbg"></div><div class="hgrid"></div><div class="hscan"></div>
+  <div style="position:relative;z-index:1;max-width:780px">
+    <div class="heyebrow fu1">🔥 Plateforme fitness premium · Côte d'Ivoire</div>
+    <h1 class="htitle fu2"><span class="gt">NO</span><br>LIMIT<span class="gt">XX</span></h1>
+    <p class="hsub fu3">Programmes d'entraînement réels, nutrition adaptée, suivi de progression — pour tous les niveaux, salle ou maison. Ta transformation commence maintenant.</p>
+    <div class="hbtns fu4">
+      <button class="bp" onclick="openPW()">ACCÉDER — 10 000 FCFA / MOIS</button>
+      <button class="bs" onclick="document.getElementById('features').scrollIntoView()">VOIR LES PROGRAMMES ↓</button>
+    </div>
+    <div class="hstats fu4">
+      <div style="text-align:center"><div class="bc gt" style="font-size:42px;font-weight:900;line-height:1">12</div><div style="font-size:11px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-top:4px">Programmes</div></div>
+      <div style="text-align:center"><div class="bc gt" style="font-size:42px;font-weight:900;line-height:1">3</div><div style="font-size:11px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-top:4px">Niveaux</div></div>
+      <div style="text-align:center"><div class="bc gt" style="font-size:42px;font-weight:900;line-height:1">60+</div><div style="font-size:11px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-top:4px">Exercices guidés</div></div>
+      <div style="text-align:center"><div class="bc gt" style="font-size:42px;font-weight:900;line-height:1">10K</div><div style="font-size:11px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-top:4px">FCFA / mois</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="slabel">FONCTIONNALITÉS</div>
+  <h2 class="stitle">Tout pour performer,<br><span class="gt">rien de superflu</span></h2>
+  <div class="sdiv"></div>
+  <p class="ssub">Chaque fonctionnalité est conçue pour maximiser tes résultats, que tu t'entraînes en salle ou chez toi.</p>
+  <div class="fgrid">
+    <div class="fcard"><div class="flock">PREMIUM</div><div style="font-size:34px;margin-bottom:14px">💪</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">PROGRAMMES RÉELS</div><div style="font-size:13px;color:var(--ml);line-height:1.7">Exercices avec séries, répétitions, temps de repos et conseils d'exécution. Adaptés à ton niveau : Débutant, Intermédiaire, Pro.</div></div>
+    <div class="fcard"><div class="flock">PREMIUM</div><div style="font-size:34px;margin-bottom:14px">🏠</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">SALLE + MAISON</div><div style="font-size:13px;color:var(--ml);line-height:1.7">Programmes spéciaux sans matériel pour t'entraîner partout. Même qualité, même intensité, zéro équipement requis.</div></div>
+    <div class="fcard"><div class="flock">PREMIUM</div><div style="font-size:34px;margin-bottom:14px">🥗</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">NUTRITION EXPERTE</div><div style="font-size:13px;color:var(--ml);line-height:1.7">Plans nutritionnels adaptés à chaque objectif. Suivi des macros, conseils pratiques, aliments recommandés.</div></div>
+    <div class="fcard"><div class="flock">PREMIUM</div><div style="font-size:34px;margin-bottom:14px">🎯</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">PERSONNALISATION</div><div style="font-size:13px;color:var(--ml);line-height:1.7">L'app s'adapte à toi : objectif, niveau, préférence salle ou maison. Tout est personnalisé dès le premier jour.</div></div>
+    <div class="fcard"><div style="font-size:34px;margin-bottom:14px">⏱</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">TIMER INTÉGRÉ</div><div style="font-size:13px;color:var(--ml);line-height:1.7">Chrono de séance, minuterie de repos automatique. Concentre-toi sur l'effort, l'app gère le reste.</div></div>
+    <div class="fcard"><div style="font-size:34px;margin-bottom:14px">📊</div><div class="bc" style="font-size:20px;font-weight:800;letter-spacing:1px;margin-bottom:8px">SUIVI CORPOREL</div><div style="font-size:13px;color:var(--ml);line-height:1.7">Courbe de poids, historique des séances, calories brûlées. Visualise tes progrès semaine après semaine.</div></div>
+  </div>
+</section>
+
+<!-- PROGRAMS PREVIEW -->
+<section id="programs" style="padding-top:0">
+  <div class="slabel">PROGRAMMES</div>
+  <h2 class="stitle">12 programmes.<br><span class="gt">3 niveaux. 4 objectifs.</span></h2>
+  <div class="sdiv"></div>
+  <p class="ssub">Chaque programme est structuré semaine par semaine, avec de vrais exercices et les bons conseils pour progresser.</p>
+  <div style="display:flex;gap:14px;overflow-x:auto;padding:40px 0 12px;scrollbar-width:none;margin:0 -4px">
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">💪</div><span class="lbadge lbeg">Débutant</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">FORCE STARTER</div><div style="font-size:11px;color:var(--m)">8 sem · Salle</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">🔥</div><span class="lbadge lint">Intermédiaire</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">MASS BUILDER</div><div style="font-size:11px;color:var(--m)">12 sem · Salle</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">⚡</div><span class="lbadge lpro">Pro</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">STRENGTH X</div><div style="font-size:11px;color:var(--m)">16 sem · Salle</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">🏃</div><span class="lbadge lbeg">Débutant</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">FAT BURN START</div><div style="font-size:11px;color:var(--m)">6 sem · Maison</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">🎯</div><span class="lbadge lint">Intermédiaire</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">BODY RECOMP</div><div style="font-size:11px;color:var(--m)">10 sem · Salle+</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+    <div class="ppcard" onclick="openPW()"><div style="font-size:28px;margin-bottom:8px">🏆</div><span class="lbadge lpro">Pro</span><div class="bc" style="font-size:18px;font-weight:800;letter-spacing:1px;margin:8px 0 3px">ATHLETE PRO</div><div style="font-size:11px;color:var(--m)">20 sem · Salle</div><div class="pblur"><span style="font-size:24px">🔒</span><span style="font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans';font-weight:600">PREMIUM</span></div></div>
+  </div>
+  <div style="text-align:center;margin-top:28px"><button class="bp" onclick="openPW()">DÉBLOQUER LES 12 PROGRAMMES</button></div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="text-align:center">
+  <div class="slabel" style="text-align:center">TARIF</div>
+  <h2 class="stitle">Simple.<br><span class="gt">10 000 FCFA.</span></h2>
+  <div class="sdiv" style="margin:20px auto"></div>
+  <p class="ssub" style="margin:0 auto">Un seul abonnement, accès complet à toute la plateforme. Aucun frais caché.</p>
+  <div class="pricebox">
+    <div style="display:inline-block;background:linear-gradient(135deg,var(--gd),var(--gl));color:#000;border-radius:50px;padding:4px 14px;font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:18px">ACCÈS COMPLET</div>
+    <div class="bc gt" style="font-size:30px;font-weight:900;letter-spacing:3px;margin-bottom:6px">PREMIUM</div>
+    <div class="bc" style="font-size:50px;font-weight:900;line-height:1;margin-bottom:3px"><span class="gt">10 000</span></div>
+    <div style="font-size:13px;color:var(--m);margin-bottom:22px">FCFA / mois</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;text-align:left">
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>12 programmes complets (Débutant → Pro)</li>
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>Salle de gym ET entraînement maison</li>
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>Plans nutritionnels détaillés</li>
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>Conseils experts intégrés à chaque exercice</li>
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>Suivi du poids & historique des séances</li>
+      <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ml)"><span style="color:var(--gold);font-weight:700">✓</span>Accès instantané après paiement</li>
+    </ul>
+    <button class="bp" style="width:100%;font-size:18px;padding:15px" onclick="openPW()">S'ABONNER MAINTENANT</button>
+    <p style="font-size:11px;color:var(--m);margin-top:10px">Orange Money ou Wave · +225 07 77 32 01 72</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="padding-top:0">
+  <div class="slabel">RÉSULTATS</div>
+  <h2 class="stitle">Ils ont franchi<br><span class="gt">leurs limites</span></h2>
+  <div class="sdiv"></div>
+  <div class="tgrid">
+    <div class="tcard"><div style="color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px">★★★★★</div><p style="font-size:13px;color:var(--ml);line-height:1.7;margin-bottom:14px;font-style:italic">"J'ai suivi le programme Force Starter pendant 8 semaines. +5kg de muscle, je me sens complètement différent. Les conseils d'exécution sont vraiment utiles."</p><div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:#000">K</div><div><div style="font-weight:600;font-size:13px">Konan A.</div><div style="font-size:11px;color:var(--m)">Prise de masse · Abidjan</div></div></div></div>
+    <div class="tcard"><div style="color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px">★★★★★</div><p style="font-size:13px;color:var(--ml);line-height:1.7;margin-bottom:14px;font-style:italic">"Le programme maison m'a sauvé. Pas de salle, pas d'excuse. -8kg en 3 mois avec Fat Burn. La nutrition séparée est exactement ce qu'il me fallait."</p><div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:#000">A</div><div><div style="font-weight:600;font-size:13px">Aminata D.</div><div style="font-size:11px;color:var(--m)">Perte de poids · Bouaké</div></div></div></div>
+    <div class="tcard"><div style="color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px">★★★★★</div><p style="font-size:13px;color:var(--ml);line-height:1.7;margin-bottom:14px;font-style:italic">"Athlete Pro, c'est du sérieux. Programme structuré, exercices précis, conseils de récupération. J'ai battu mes records sur chaque mouvement."</p><div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:#000">M</div><div><div style="font-weight:600;font-size:13px">Marcus T.</div><div style="font-size:11px;color:var(--m)">Performance · San-Pédro</div></div></div></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="text-align:center;padding:70px 20px 110px">
+  <h2 class="stitle" style="font-size:clamp(48px,8vw,90px)">AUCUNE<br><span class="gt">LIMITE</span></h2>
+  <p style="font-size:14px;color:var(--ml);max-width:380px;margin:14px auto 36px;line-height:1.7">10 000 FCFA. Accès complet. Résultats réels. Ta transformation commence aujourd'hui.</p>
+  <button class="bp" style="font-size:21px;padding:18px 52px" onclick="openPW()">COMMENCER MAINTENANT</button>
+</section>
+
+<footer>
+  <div class="bc gt" style="font-size:26px;font-weight:900;letter-spacing:4px;margin-bottom:6px">NOLIMITXX</div>
+  <div style="font-size:11px;color:var(--m);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px">No Limits. No Excuses. Only Results.</div>
+  <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <a href="#features" style="color:var(--ml);text-decoration:none;font-size:13px">Fonctionnalités</a>
+    <a href="#programs" style="color:var(--ml);text-decoration:none;font-size:13px">Programmes</a>
+    <a href="#pricing" style="color:var(--ml);text-decoration:none;font-size:13px">Tarif</a>
+    <a href="https://wa.me/2250777320172" style="color:var(--gold);text-decoration:none;font-size:13px">WhatsApp</a>
+  </div>
+  <div style="font-size:11px;color:var(--m)">© 2026 NOLIMITXX · Côte d'Ivoire</div>
+</footer>
+</div><!-- /landing -->
+
+<!-- PAYWALL -->
+<div id="pw">
+  <div class="pwbox">
+    <button class="pwclose" onclick="closePW()">✕</button>
+    <div style="font-size:38px;margin-bottom:10px">🔐</div>
+    <div class="bc gt" style="font-size:34px;font-weight:900;letter-spacing:3px;margin-bottom:5px">ACCÈS PREMIUM</div>
+    <p style="font-size:13px;color:var(--ml);margin-bottom:4px">Suis les 3 étapes pour accéder à l'app.</p>
+    <div style="display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:50px;padding:5px 16px;margin:10px 0 18px">
+      <span class="bc" style="font-size:20px;font-weight:800;color:var(--gold)">10 000 FCFA / mois</span>
+    </div>
+    <div class="pwstep">
+      <div class="snum">1</div>
+      <div style="flex:1">
+        <div style="font-weight:600;font-size:14px;margin-bottom:4px">Choisis ton moyen de paiement</div>
+        <div style="display:flex;gap:10px;margin-top:10px">
+          <div class="pmeth" style="border-color:rgba(255,140,0,.3)" onclick="selectM('orange',this)"><span style="font-size:22px;display:block;margin-bottom:3px">🟠</span>Orange Money</div>
+          <div class="pmeth" style="border-color:rgba(30,144,255,.3)" onclick="selectM('wave',this)"><span style="font-size:22px;display:block;margin-bottom:3px">🔵</span>Wave</div>
+        </div>
+      </div>
+    </div>
+    <div class="pwstep" id="ps2" style="display:none">
+      <div class="snum">2</div>
+      <div>
+        <div style="font-weight:600;font-size:14px;margin-bottom:6px">Envoie 10 000 FCFA au numéro</div>
+        <div class="bc" style="font-size:26px;font-weight:900;color:var(--gold);letter-spacing:3px;margin:6px 0">+225 07 77 32 01 72</div>
+        <div style="font-size:12px;color:var(--ml)">Nom : <strong>NOLIMITXX</strong> · Motif : <strong>ABONNEMENT</strong></div>
+      </div>
+    </div>
+    <div class="pwstep" id="ps3" style="display:none">
+      <div class="snum">3</div>
+      <div style="width:100%">
+        <div style="font-weight:600;font-size:14px;margin-bottom:5px">Reçois ton code d'accès</div>
+        <div style="font-size:12px;color:var(--ml);margin-bottom:10px">Envoie ton reçu sur <a href="https://wa.me/2250777320172?text=Bonjour%2C%20j%27ai%20pay%C3%A9%20mon%20abonnement%20NOLIMITXX.%20Voici%20mon%20re%C3%A7u%20%3A" target="_blank" style="color:var(--gold);font-weight:600;text-decoration:none">WhatsApp +225 07 77 32 01 72</a> → reçois ton code sous 1h.</div>
+        <input class="cin" id="cin" type="text" placeholder="NLXX-MMAA" maxlength="9" oninput="fmtCin(this)">
+        <div style="font-size:11px;color:var(--m);margin-top:5px">Code reçu par WhatsApp après confirmation du paiement</div>
+        <div id="cerr" style="color:#E84C4C;font-size:12px;margin-top:6px;display:none">❌ Code invalide. Vérifie et réessaie.</div>
+        <div id="csuc" style="color:#4CE8A0;font-size:12px;margin-top:6px;display:none">✅ Accès débloqué ! Chargement…</div>
+        <button class="vbtn" onclick="verifCode()">VALIDER MON ACCÈS</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onb">
+  <div style="max-width:440px;margin:0 auto;padding:48px 20px 60px;display:flex;flex-direction:column;min-height:100vh">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="bc gt" style="font-size:38px;font-weight:900;letter-spacing:5px">NOLIMITXX</div>
+      <div style="font-size:11px;color:var(--m);letter-spacing:3px;margin-top:4px">NO LIMITS. ONLY RESULTS.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:8px;margin-bottom:30px" id="stepDots"></div>
+    <div id="onbContent" style="flex:1"></div>
+    <div style="display:flex;gap:10px;margin-top:28px">
+      <button id="backBtn" onclick="onbBack()" style="flex:1;padding:14px;background:var(--card);border:1px solid var(--b);border-radius:12px;color:var(--m);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;display:none">← Retour</button>
+      <button onclick="onbNext()" class="bp" style="flex:2;padding:14px;border-radius:12px;font-size:18px;letter-spacing:3px" id="nextBtn">SUIVANT →</button>
+    </div>
+  </div>
+</div>
+
+<!-- REST OVERLAY -->
+<div id="ro">
+  <p style="font-size:11px;color:var(--m);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;font-family:'DM Sans'">Récupération</p>
+  <div id="rc">60</div>
+  <p style="font-size:12px;color:var(--m);margin-top:6px;letter-spacing:2px;font-family:'DM Sans'">SECONDES</p>
+  <button onclick="skipRest()" style="margin-top:40px;background:var(--card);border:1px solid var(--b);color:var(--m);cursor:pointer;border-radius:50px;padding:11px 30px;font-family:'DM Sans';font-size:14px;transition:all .2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--b)'">Passer →</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="anav">
+    <button class="atab on" onclick="showTab('tProg',this)">🏠 Séances</button>
+    <button class="atab" onclick="showTab('tNut',this)">🥗 Nutrition</button>
+    <button class="atab" onclick="showTab('tSuivi',this)">📊 Suivi</button>
+    <button class="atab" onclick="showTab('tHist',this)">📅 Historique</button>
+    <button class="atab" onclick="showTab('tPlan',this)">⚙️ Mon Profil</button>
+  </div>
+  <div class="ac">
+
+    <!-- SÉANCES -->
+    <div id="tProg" class="tp on">
+      <div style="margin-bottom:24px">
+        <div class="bc gt" style="font-size:12px;font-weight:700;letter-spacing:4px">NOLIMITXX</div>
+        <div class="bc" style="font-size:36px;font-weight:900;letter-spacing:1px">MES SÉANCES</div>
+        <div style="font-size:13px;color:var(--m)" id="appSub">Bienvenue 👋</div>
+      </div>
+      <!-- KPI strip -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
+        <div class="card" style="padding:14px 10px;text-align:center;border-color:rgba(201,168,76,.2)"><div style="font-size:18px;margin-bottom:3px">🏋️</div><div class="bc" style="font-size:24px;font-weight:800;color:var(--gold)" id="kSes">0</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1px">Séances</div></div>
+        <div class="card" style="padding:14px 10px;text-align:center"><div style="font-size:18px;margin-bottom:3px">🔥</div><div class="bc" style="font-size:24px;font-weight:800;color:#E84C4C" id="kCal">0</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1px">kcal brûlées</div></div>
+        <div class="card" style="padding:14px 10px;text-align:center"><div style="font-size:18px;margin-bottom:3px">⚖️</div><div class="bc" style="font-size:20px;font-weight:800;color:#4C9CE8" id="kW">—</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1px">Poids actuel</div></div>
+      </div>
+      <!-- Profile strip -->
+      <div class="cardg" style="padding:13px 15px;margin-bottom:22px;display:flex;align-items:center;gap:12px">
+        <div id="pAvatar" style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#000;flex-shrink:0">U</div>
+        <div style="flex:1"><div style="font-weight:600;font-size:15px" id="pName">Mon profil</div><div style="display:flex;gap:8px;margin-top:3px"><span id="pLevel" style="font-size:11px;color:var(--gold)">—</span><span style="font-size:11px;color:var(--m)">·</span><span id="pGoal" style="font-size:11px;color:var(--m)">—</span><span style="font-size:11px;color:var(--m)">·</span><span id="pLieu" style="font-size:11px;color:var(--m)">—</span></div></div>
+        <button onclick="showTab('tPlan',document.querySelectorAll('.atab')[4])" style="background:var(--card);border:1px solid var(--b);border-radius:9px;padding:7px 12px;color:var(--m);cursor:pointer;font-family:'DM Sans';font-size:12px;transition:all .2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--b)'">Modifier</button>
+      </div>
+      <!-- Filters -->
+      <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px;scrollbar-width:none" id="filterRow"></div>
+      <!-- Programs grid -->
+      <div id="progGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px"></div>
+    </div>
+
+    <!-- NUTRITION -->
+    <div id="tNut" class="tp">
+      <div style="margin-bottom:24px">
+        <div class="bc gt" style="font-size:12px;font-weight:700;letter-spacing:4px">NOLIMITXX</div>
+        <div class="bc" style="font-size:36px;font-weight:900;letter-spacing:1px">NUTRITION</div>
+        <div style="font-size:13px;color:var(--m)" id="nutSub">Objectif : 2400 kcal / jour</div>
+      </div>
+      <!-- Macro ring -->
+      <div class="cardg" style="padding:20px;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:18px">
+          <div style="position:relative;flex-shrink:0">
+            <svg width="88" height="88" style="transform:rotate(-90deg)">
+              <circle cx="44" cy="44" r="34" fill="none" stroke="var(--b)" stroke-width="8"/>
+              <circle id="calRing" cx="44" cy="44" r="34" fill="none" stroke="var(--gold)" stroke-width="8" stroke-linecap="round" style="stroke-dasharray:213.6;stroke-dashoffset:213.6;transition:stroke-dashoffset .6s"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="bc" style="font-size:18px;font-weight:800;color:var(--gold)" id="calPct">0%</div></div>
+          </div>
+          <div style="flex:1">
+            <div class="bc" style="font-size:28px;font-weight:800"><span id="totCal">0</span> <span style="font-size:12px;font-weight:400;color:var(--m)">kcal</span></div>
+            <div id="macroBars"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Plan nutri selon objectif -->
+      <div id="nutPlan" class="cardg" style="padding:18px;margin-bottom:18px"></div>
+      <!-- Add food -->
+      <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Ajouter un aliment</div>
+      <input type="text" id="foodSrch" placeholder="🔍  Rechercher un aliment..." oninput="srchFood(this.value)">
+      <div id="foodRes" style="display:none;background:var(--card);border:1px solid var(--b);border-radius:12px;overflow:hidden;margin-top:6px;margin-bottom:14px"></div>
+      <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Journal du jour</div>
+      <div id="foodLog"></div>
+    </div>
+
+    <!-- SUIVI -->
+    <div id="tSuivi" class="tp">
+      <div style="margin-bottom:24px">
+        <div class="bc gt" style="font-size:12px;font-weight:700;letter-spacing:4px">NOLIMITXX</div>
+        <div class="bc" style="font-size:36px;font-weight:900;letter-spacing:1px">SUIVI CORPOREL</div>
+        <div style="font-size:13px;color:var(--m)">Poids & progression</div>
+      </div>
+      <div class="cardg" style="padding:16px;margin-bottom:16px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Nouvelle pesée</div>
+        <div style="display:flex;gap:10px">
+          <input type="number" id="newW" placeholder="Ex: 75.5" style="flex:1">
+          <button onclick="addW()" class="bp" style="border-radius:10px;padding:0 18px;font-size:15px;letter-spacing:2px;white-space:nowrap">+ ADD</button>
+        </div>
+      </div>
+      <div class="card" style="padding:18px;margin-bottom:16px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Courbe de poids</div>
+        <svg id="wChart" width="100%" height="90" style="margin-bottom:8px"></svg>
+        <div id="wLabels" style="display:flex;justify-content:space-between"></div>
+        <div id="wVar" style="margin-top:10px"></div>
+      </div>
+      <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Journal</div>
+      <div id="wLog"></div>
+    </div>
+
+    <!-- HISTORIQUE -->
+    <div id="tHist" class="tp">
+      <div style="margin-bottom:24px">
+        <div class="bc gt" style="font-size:12px;font-weight:700;letter-spacing:4px">NOLIMITXX</div>
+        <div class="bc" style="font-size:36px;font-weight:900;letter-spacing:1px">HISTORIQUE</div>
+        <div style="font-size:13px;color:var(--m)" id="histSub">0 séances</div>
+      </div>
+      <div id="histKpi" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px"></div>
+      <div id="histList"></div>
+    </div>
+
+    <!-- MON PROFIL -->
+    <div id="tPlan" class="tp">
+      <div style="margin-bottom:24px">
+        <div class="bc gt" style="font-size:12px;font-weight:700;letter-spacing:4px">NOLIMITXX</div>
+        <div class="bc" style="font-size:36px;font-weight:900;letter-spacing:1px">MON PROFIL</div>
+        <div style="font-size:13px;color:var(--m)">Personnalise ton expérience</div>
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:14px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Prénom</div>
+        <input type="text" id="pnInput" placeholder="Ton prénom" oninput="P.name=this.value">
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:14px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Objectif principal</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="goalChips"></div>
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:14px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Niveau</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="levelChips"></div>
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:14px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Lieu d'entraînement</div>
+        <div style="display:flex;gap:8px" id="lieuChips"></div>
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:14px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Calories cibles / jour</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap" id="calChips"></div>
+      </div>
+      <div class="cardg" style="padding:18px;margin-bottom:18px">
+        <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Protéines cibles / jour</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap" id="protChips"></div>
+      </div>
+      <button onclick="saveProfil()" class="bp" style="width:100%;padding:15px;border-radius:12px;font-size:18px;letter-spacing:3px">ENREGISTRER ✓</button>
+    </div>
+
+  </div><!-- /ac -->
+</div><!-- /app -->
+
+<!-- WORKOUT MODAL -->
+<div id="wm">
+  <div style="max-width:600px;margin:0 auto;padding:18px 16px 60px;width:100%">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <button onclick="quitW()" style="background:var(--card);border:1px solid var(--b);border-radius:10px;padding:7px 14px;color:var(--m);cursor:pointer;font-family:'DM Sans';font-size:13px;transition:all .2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--b)'">✕ Quitter</button>
+      <div class="bc" style="font-size:26px;font-weight:800;color:var(--gold)" id="wTimer">00:00</div>
+      <div style="font-size:12px;color:var(--m)" id="wProgName"></div>
+    </div>
+    <div style="height:2px;background:var(--b);border-radius:2px;margin-bottom:5px;overflow:hidden"><div id="wBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--gd),var(--gold));transition:width .5s;border-radius:2px"></div></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:22px">
+      <span style="font-size:11px;color:var(--m)" id="wExCnt">Exercice 1/4</span>
+      <span style="font-size:11px;color:var(--gold)" id="wPct">0%</span>
+    </div>
+    <!-- Exercise card -->
+    <div class="cardg" style="padding:24px;margin-bottom:12px;animation:glow 3s infinite">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+        <div>
+          <div class="bc" style="font-size:32px;font-weight:800;letter-spacing:1px;line-height:1.1" id="exName">—</div>
+          <div style="font-size:12px;color:var(--m);margin-top:4px" id="exMuscles"></div>
+          <div id="exWBadge" style="margin-top:7px;display:none;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);border-radius:50px;padding:3px 11px;display:inline-block"><span style="font-size:11px;color:var(--gold)" id="exWTxt">⚖ 0 kg</span></div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div class="bc" style="font-size:42px;font-weight:900;color:var(--gold);line-height:1" id="exSetCur">1</div>
+          <div style="font-size:10px;color:var(--m)" id="exSetTot">/ 3 séries</div>
+        </div>
+      </div>
+      <!-- Conseil -->
+      <div id="exImgContainer" style="display:none;margin-bottom:14px">
+  <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">
+    <img id="exGif" src="" alt="" style="height:140px;border-radius:12px;border:1px solid rgba(201,168,76,.2);object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">
+    <img id="exImg" src="" alt="" style="height:140px;border-radius:12px;border:1px solid rgba(201,168,76,.2);object-fit:cover;flex-shrink:0" onerror="this.style.display='none'">
+  </div>
+  <div style="font-size:10px;color:var(--m);margin-top:5px;font-style:italic">Swipe pour voir les deux visuels →</div>
+</div>
+<div id="exTip" style="background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:10px 13px;margin-bottom:14px;font-size:12px;color:var(--ml);line-height:1.6;font-style:italic"></div>
+      <!-- Metrics -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        <div style="background:var(--s);border-radius:12px;padding:12px;text-align:center;border:1px solid var(--b)"><div class="bc" style="font-size:32px;font-weight:700" id="exReps">—</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1px;margin-top:2px" id="exRepsL">Répétitions</div></div>
+        <div style="background:var(--s);border-radius:12px;padding:12px;text-align:center;border:1px solid var(--b)"><div class="bc" style="font-size:32px;font-weight:700;color:var(--m)" id="exRest">60</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1px;margin-top:2px">Repos (sec)</div></div>
+      </div>
+      <!-- Set dots -->
+      <div style="display:flex;gap:7px;margin-bottom:18px" id="setDots"></div>
+      <button onclick="completeSet()" class="bp" style="width:100%;padding:16px;border-radius:12px;font-size:19px;letter-spacing:3px">SÉRIE TERMINÉE ✓</button>
+    </div>
+    <!-- Next ex -->
+    <div id="nextExCard" style="display:none;background:var(--card);border:1px solid var(--b);border-radius:13px;padding:12px 16px;display:flex;gap:12px;align-items:center">
+      <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;font-family:'DM Sans'">SUIVANT</div>
+      <div style="width:1px;height:24px;background:var(--b)"></div>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px" id="nextExName">—</div><div style="font-size:11px;color:var(--m)" id="nextExDet">—</div></div>
+      <div style="color:var(--gold);font-size:18px">›</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════
+   DATA — PROGRAMMES COMPLETS
+══════════════════════════ */
+const PROGS = [
+/* ─── DÉBUTANT SALLE ─── */
+{id:'p1',name:'FORCE STARTER',icon:'💪',level:'Débutant',lieu:'Salle',goal:'masse',color:'#4CE8A0',weeks:8,days:3,desc:'Le point de départ idéal pour construire une base musculaire solide. Mouvements fondamentaux, technique avant tout.',
+ tips:['Concentre-toi sur la technique avant d\'augmenter les charges','Repose-toi 48h entre deux séances du même groupe musculaire','Bois au moins 2L d\'eau par jour','Dors 7-8h pour maximiser la récupération musculaire'],
+ nutrition:{cal:2500,p:150,g:300,l:70,conseil:'Mange 5-6 repas par jour. Priorité aux protéines maigres (poulet, thon, oeufs). Glucides complexes avant l\'entraînement, protéines après.'},
+ exercises:[
+  {n:'Squat à la barre',s:3,r:12,rest:90,w:40,m:'Quadriceps, Fessiers, Core',tip:'Pieds écartés à la largeur des épaules. Descends jusqu\'à ce que les cuisses soient parallèles au sol. Garde le dos droit, regarde devant toi.'},
+  {n:'Développé couché haltères',s:3,r:12,rest:90,w:16,m:'Pectoraux, Triceps, Épaules',tip:'Commence avec des haltères légers. Descends lentement (3s), pousse explosif. Les coudes à 45° par rapport au corps.'},
+  {n:'Tirage poitrine (câble)',s:3,r:12,rest:90,w:35,m:'Grand dorsal, Biceps',tip:'Tire vers la poitrine, pas derrière la tête. Contracte les omoplates en bas. Contrôle la remontée.'},
+  {n:'Presse militaire haltères',s:3,r:12,rest:90,w:12,m:'Épaules, Triceps',tip:'Assis, dos bien droit. Pousse verticalement. Ne bloque pas les coudes en haut.'},
+  {n:'Curl biceps haltères',s:3,r:12,rest:60,w:10,m:'Biceps',tip:'Coudes collés au corps. Monte lentement, descends encore plus lentement (4s). Contraction maximale en haut.'},
+  {n:'Extension triceps poulie',s:3,r:12,rest:60,w:15,m:'Triceps',tip:'Coudes fixes, seuls les avant-bras bougent. Descends jusqu\'à l\'extension complète.'},
+  {n:'Gainage planche',s:3,r:30,rest:60,w:0,m:'Core, Abdominaux',tip:'Corps droit comme une planche. Ne laisse pas les hanches s\'affaisser. Respire normalement. Augmente de 5s chaque semaine.',timed:true},
+ ]},
+{id:'p2',name:'FAT BURN START',icon:'🏃',level:'Débutant',lieu:'Maison',goal:'poids',color:'#E84C4C',weeks:6,days:4,desc:'Programme maison sans équipement pour brûler les graisses et retrouver la forme. Cardio + renforcement.',
+ tips:['Fais le programme à jeun le matin pour brûler plus de graisses','Ajoute 30min de marche rapide les jours de repos','Ne saute pas le repas post-entraînement — protéines obligatoires','Évite les sodas et les sucres raffinés'],
+ nutrition:{cal:1800,p:130,g:180,l:55,conseil:'Déficit calorique modéré (-300 kcal/jour). Mange beaucoup de légumes, protéines maigres, et évite les sucres rapides après 18h.'},
+ exercises:[
+  {n:'Échauffement cardio (saut sur place)',s:1,r:60,rest:30,w:0,m:'Cardio général',tip:'Commence toujours par 5-10min d\'échauffement. Genoux hauts, bras actifs. Progressif.',timed:true},
+  {n:'Burpees',s:4,r:15,rest:45,w:0,m:'Full body, Cardio',tip:'Position push-up → saut explosif avec mains levées. Atterris doucement en pliant les genoux. Qualité > vitesse.'},
+  {n:'Pompes classiques',s:3,r:15,rest:45,w:0,m:'Pectoraux, Triceps, Épaules',tip:'Corps aligné. Si trop difficile, fais-les sur les genoux. Descends jusqu\'à 2cm du sol, pousse explosif.'},
+  {n:'Squats sautés',s:4,r:20,rest:45,w:0,m:'Quadriceps, Fessiers, Cardio',tip:'Descends en squat, saute fort. Atterris en douceur, genoux légèrement fléchis. Enchaîne immédiatement.'},
+  {n:'Mountain climbers',s:4,r:30,rest:45,w:0,m:'Core, Cardio',tip:'Position planche. Ramène les genoux vers la poitrine alternativement vite. Hanches basses. Respire!',timed:true},
+  {n:'Fentes alternées',s:3,r:20,rest:60,w:0,m:'Quadriceps, Fessiers, Ischio-jambiers',tip:'Grand pas en avant. Genou avant ne dépasse pas les orteils. Genou arrière près du sol. Dos droit.'},
+  {n:'Crunches',s:3,r:25,rest:45,w:0,m:'Abdominaux',tip:'Mains derrière la tête, ne tire pas le cou. Contracte les abdos, exhale en montant. Ne monte pas jusqu\'au bout.'},
+ ]},
+{id:'p3',name:'FORME SANTÉ',icon:'🧘',level:'Débutant',lieu:'Maison',goal:'forme',color:'#4C9CE8',weeks:6,days:3,desc:'Programme bien-être pour améliorer ta forme générale, ta souplesse et ton énergie au quotidien.',
+ tips:['La régularité prime sur l\'intensité','5 minutes d\'étirements après chaque séance','Marche 10 000 pas par jour en dehors des séances','Médite 5 min avant de dormir pour mieux récupérer'],
+ nutrition:{cal:2000,p:120,g:220,l:60,conseil:'Alimentation équilibrée. Fruits et légumes à chaque repas. Hydratation régulière. Pas de régime strict, mais évite la junk food.'},
+ exercises:[
+  {n:'Marche sur place (warm-up)',s:1,r:120,rest:0,w:0,m:'Échauffement cardio',tip:'5 minutes minimum. Genoux hauts. Active le corps progressivement avant tout effort.',timed:true},
+  {n:'Squats bodyweight',s:3,r:15,rest:60,w:0,m:'Jambes, Fessiers',tip:'Pieds à la largeur des épaules. Bras tendus devant pour l\'équilibre. Descends lentement, remonte en contractant les fessiers.'},
+  {n:'Pompes sur genoux',s:3,r:10,rest:60,w:0,m:'Pectoraux, Triceps',tip:'Parfait pour débuter. Corps aligné des genoux aux épaules. Descends le buste vers le sol. Progression vers pompes complètes.'},
+  {n:'Gainage latéral (chaque côté)',s:2,r:30,rest:45,w:0,m:'Obliques, Core',tip:'Corps aligné, hanches soulevées. Ne laisse pas les hanches descendre. Respire lentement.',timed:true},
+  {n:'Superman (extension dos)',s:3,r:12,rest:60,w:0,m:'Lombaires, Fessiers',tip:'Allongé sur le ventre. Lève bras et jambes simultanément. Tiens 2 secondes en haut. Très doux pour le dos.'},
+  {n:'Étirements (yoga flow)',s:1,r:300,rest:0,w:0,m:'Souplesse générale',tip:'5 min d\'étirements doux à la fin. Quadriceps, ischio-jambiers, épaules, dos. Tiens chaque position 30s. Respire profondément.',timed:true},
+ ]},
+
+/* ─── INTERMÉDIAIRE SALLE ─── */
+{id:'p4',name:'MASS BUILDER',icon:'🔥',level:'Intermédiaire',lieu:'Salle',goal:'masse',color:'#C9A84C',weeks:12,days:4,desc:'Programme PPL (Push/Pull/Legs) optimisé pour la prise de masse. Progression linéaire de la charge chaque semaine.',
+ tips:['Augmente les charges de 2.5kg chaque semaine si tu fais toutes les reps','Mange en surplus calorique (+300 kcal/jour)','Protéines : 2g par kg de poids de corps','Le sommeil est ton meilleur allié pour la récupération'],
+ nutrition:{cal:3000,p:190,g:350,l:85,conseil:'Surplus de 300-500 kcal/jour. Répartis les protéines sur 4-5 repas. Féculents avant et après l\'entraînement. Shake protéiné post-séance.'},
+ exercises:[
+  {n:'Développé couché barre',s:4,r:8,rest:120,w:70,m:'Pectoraux, Triceps, Épaules ant.',tip:'Saisie légèrement plus large que les épaules. Descends jusqu\'à effleurer la poitrine. Ne rebondis pas. Pousse en arc.'},
+  {n:'Squat barre (back squat)',s:4,r:8,rest:120,w:80,m:'Quadriceps, Fessiers, Ischio-jambiers',tip:'Barre haute sur les trapèzes. Descends sous le parallèle. Genoux dans l\'axe des pieds. Pousse le sol.'},
+  {n:'Soulevé de terre roumain',s:4,r:10,rest:90,w:60,m:'Ischio-jambiers, Fessiers, Lombaires',tip:'Dos droit, barre proche des jambes. Penche le buste en gardant les genoux légèrement fléchis. Contracte les fessiers en remontant.'},
+  {n:'Tirage vertical (lat pulldown)',s:4,r:10,rest:90,w:55,m:'Grand dorsal, Biceps',tip:'Prise large. Tire vers le haut de la poitrine. Omoplates vers le bas et l\'intérieur. Contrôle la montée.'},
+  {n:'Développé militaire barre',s:4,r:8,rest:90,w:50,m:'Épaules, Triceps',tip:'Debout ou assis. Barre devant, pas derrière. Pousse verticalement. Core gainé. Pas de cambre excessif.'},
+  {n:'Rowing haltère un bras',s:4,r:10,rest:75,w:28,m:'Grand dorsal, Biceps, Rhomboïdes',tip:'Genou et main sur le banc. Tire le coude vers le haut, pas derrière. Rotation naturelle du torse.'},
+  {n:'Hip thrust barre',s:4,r:12,rest:90,w:70,m:'Fessiers, Ischio-jambiers',tip:'Épaules sur le banc. Pousse les hanches vers le ciel. Contracte les fessiers au maximum en haut. Tiens 1 seconde.'},
+ ]},
+{id:'p5',name:'BODY RECOMP',icon:'🎯',level:'Intermédiaire',lieu:'Salle',goal:'poids',color:'#B44CE8',weeks:10,days:5,desc:'Brûle les graisses tout en maintenant le muscle. Programme de recomposition corporelle avec cardio intégré.',
+ tips:['Pèse-toi le matin à jeun, même jour chaque semaine','Photos mensuelles : les photos ne mentent pas','Le cardio LISS (marche rapide) après la musculation','Ne coupe pas trop les glucides : garde l\'énergie pour l\'entraînement'],
+ nutrition:{cal:2200,p:170,g:210,l:65,conseil:'Maintenance ou léger déficit (-200 kcal). Protéines élevées pour préserver le muscle. Glucides cycliques : plus les jours d\'entraînement, moins les jours de repos.'},
+ exercises:[
+  {n:'Circuit squat / pompes / rowing',s:4,r:15,rest:45,w:0,m:'Full body, Cardio',tip:'Enchaîne sans repos entre les exercices. Repos uniquement entre les circuits. Maintient le rythme cardiaque élevé.'},
+  {n:'Soulevé de terre',s:4,r:8,rest:120,w:80,m:'Dos, Fessiers, Ischio-jambiers',tip:'Le roi des exercices. Dos plat, barre sur les tibias. Pousse le sol. Hanche et épaules montent ensemble. Ne courbe pas le dos.'},
+  {n:'Dips (triceps)',s:4,r:12,rest:75,w:0,m:'Triceps, Pectoraux inférieurs',tip:'Corps vertical pour les triceps. Descends jusqu\'à 90° aux coudes. Si trop facile, ajoute du poids avec une ceinture.'},
+  {n:'Fentes marchées avec haltères',s:4,r:12,rest:75,w:20,m:'Quadriceps, Fessiers',tip:'Grand pas. Genou avant dans l\'axe du pied. Genou arrière à 2cm du sol. Alterne les jambes en marchant.'},
+  {n:'Élévations latérales',s:4,r:15,rest:60,w:10,m:'Épaules latérales (deltoïde moyen)',tip:'Coudes légèrement fléchis. Monte jusqu\'à la hauteur des épaules, pas plus haut. Descends lentement.'},
+  {n:'HIIT vélo / rameur (10min)',s:1,r:600,rest:0,w:0,m:'Cardio, Fat burning',tip:'20s effort max / 40s récupération × 10 rounds. Le HIIT brûle les graisses encore 24h après l\'effort.',timed:true},
+ ]},
+{id:'p6',name:'FUNCTIONAL FIT',icon:'⚡',level:'Intermédiaire',lieu:'Maison',goal:'forme',color:'#4C9CE8',weeks:8,days:4,desc:'Entraînement fonctionnel sans matériel inspiré du CrossFit. Force, cardio, souplesse — tout en un.',
+ tips:['Améliore ta mobilité : 10min d\'étirements matin et soir','Hydrate-toi avant, pendant et après','Varie les exercices pour éviter la stagnation','L\'alimentation fait 70% du résultat'],
+ nutrition:{cal:2300,p:145,g:250,l:68,conseil:'Alimentation propre et variée. Protéines à chaque repas. Évite les aliments ultra-transformés. Timing : repas 2h avant l\'entraînement.'},
+ exercises:[
+  {n:'Échauffement dynamique',s:1,r:300,rest:0,w:0,m:'Mobilité générale',tip:'Rotations articulaires, légère montée de genoux, talons-fesses. Prépare les articulations pour l\'effort.',timed:true},
+  {n:'Pompes diamant (triceps)',s:4,r:12,rest:60,w:0,m:'Triceps, Pectoraux internes',tip:'Mains très rapprochées, doigts formant un diamant. Plus difficile que les pompes classiques. Variation efficace.'},
+  {n:'Pistol squat assisté',s:3,r:8,rest:90,w:0,m:'Quadriceps, Équilibre',tip:'Une jambe tendue devant, squatte sur l\'autre. Aide-toi d\'une chaise si nécessaire. Exercice de force et d\'équilibre.'},
+  {n:'Pike push-ups (épaules)',s:4,r:12,rest:60,w:0,m:'Épaules, Triceps',tip:'Fessiers en l\'air, corps en V. Descends la tête vers le sol entre les mains. Simule le développé militaire.'},
+  {n:'Nordic curls (ischio-jambiers)',s:3,r:8,rest:90,w:0,m:'Ischio-jambiers, Mollets',tip:'Genoux au sol, pieds bloqués. Descends le buste lentement (4s). L\'un des meilleurs exercices sans matériel pour les ischio.'},
+  {n:'Planche dynamique (up-downs)',s:4,r:10,rest:60,w:0,m:'Core, Épaules',tip:'Planche sur les coudes → planche sur les mains, alternativement. Très efficace pour le gainage dynamique.'},
+ ]},
+
+/* ─── PRO SALLE ─── */
+{id:'p7',name:'STRENGTH X',icon:'🏆',level:'Pro',lieu:'Salle',goal:'masse',color:'#E8A84C',weeks:16,days:5,desc:'Programme powerbuilding avancé. Force maximale + hypertrophie. Périodisation ondulatoire pour briser les plateaux.',
+ tips:['Tiens un journal d\'entraînement — note les charges et les reps','RPE (effort perçu) : travaille entre 7-9/10 sur les exercices lourds','Déload toutes les 4-6 semaines : réduis le volume de 40%','Priorité absolue au sommeil et à la récupération'],
+ nutrition:{cal:3500,p:210,g:420,l:100,conseil:'Surplus calorique calculé. Timing nutritionnel : glucides autour de l\'entraînement, protéines toute la journée. Créatine monohydrate : 5g/jour.'},
+ exercises:[
+  {n:'Squat barre (lourd)',s:5,r:5,rest:180,w:120,m:'Quadriceps, Fessiers, Adducteurs, Core',tip:'Semaine 1-4 : 5×5. Semaine 5-8 : 4×3 plus lourd. Semaine 9-12 : volume + intensité. Toujours sous le parallèle.'},
+  {n:'Bench press (pause rep)',s:5,r:5,rest:180,w:100,m:'Pectoraux, Triceps, Épaules ant.',tip:'Pause 1s sur la poitrine à chaque rep. Développe la force en bas du mouvement. Pas de rebond.'},
+  {n:'Soulevé de terre',s:4,r:4,rest:240,w:140,m:'Dos complet, Fessiers, Jambes',tip:'Alterne sumo et conventionnel selon les semaines. Setup parfait avant chaque tentative. Ne te précipite pas.'},
+  {n:'Développé militaire strict',s:4,r:6,rest:150,w:70,m:'Épaules, Triceps, Core',tip:'Pas d\'élan des jambes. Core très gainé. Si tu cales, fais du push press. Bras complètement tendus en haut.'},
+  {n:'Tirage yates row',s:4,r:8,rest:120,w:90,m:'Grand dorsal, Épaules post., Biceps',tip:'Torse penché à 70°, pas 45°. Tire vers le nombril. Omoplate compressée en haut. Doris Yates en est l\'inventeur.'},
+  {n:'Leg press (haute pression)',s:4,r:12,rest:120,w:180,m:'Quadriceps, Fessiers',tip:'Pieds hauts pour plus de fessiers. Descends au maximum. Ne bloque pas les genoux en haut. Complément parfait au squat.'},
+  {n:'Face pull (câble)',s:4,r:15,rest:60,w:20,m:'Épaules postérieures, Coiffes rotateurs',tip:'ESSENTIEL pour la santé des épaules. Tire vers le visage, coudes à hauteur des épaules. Rotation externe maximale.'},
+ ]},
+{id:'p8',name:'ATHLETE PRO',icon:'⚡',level:'Pro',lieu:'Salle',goal:'perf',color:'#4C9CE8',weeks:20,days:6,desc:'Programme de performance sportive avancé. Force explosive, puissance, vitesse et endurance musculaire.',
+ tips:['Plyométrie à jeun le matin pour la puissance nerveuse','Massage et rouleau de mousse quotidien','HRV (Heart Rate Variability) : ajuste l\'intensité selon ta récup','Périodisation bloc : 4 semaines force → 4 semaines puissance → 4 semaines perf'],
+ nutrition:{cal:4000,p:220,g:480,l:110,conseil:'Carburant de compétition. Glucides cycliques selon l\'intensité du jour. Récupération : protéines rapides dans les 30min post-séance. Antioxydants (fruits rouges, thé vert).'},
+ exercises:[
+  {n:'Clean & Jerk',s:5,r:3,rest:240,w:80,m:'Full body, Explosivité',tip:'Le mouvement le plus complet qui soit. Phase tirage : explosif. Réception squat : stable. Ne pas apprendre seul — coaching recommandé.'},
+  {n:'Box jump (plyométrie)',s:5,r:5,rest:120,w:0,m:'Quadriceps, Fessiers, Explosivité',tip:'Saute sur la boîte, atterris en squat. Redescends en marchant, pas en sautant. Qualité > quantité. Hauteur progressive.'},
+  {n:'Squat pause lourd',s:5,r:3,rest:240,w:130,m:'Jambes complètes, Force maximale',tip:'5s de pause en bas. Élimine le réflexe myotatique. Développe la force pure. Difficile mais très efficace.'},
+  {n:'Sprint 10-30m (5 répétitions)',s:3,r:10,rest:180,w:0,m:'Cardio, Puissance, Vitesse',tip:'Échauffement complet avant. Départ arrêté ou lancé. Récupération complète entre les séries. Qualité maximale.'},
+  {n:'Traction lestée (ceinture)',s:5,r:5,rest:150,w:20,m:'Grand dorsal, Biceps, Force',tip:'Progression inévitable : si 3×8 sans lest facile, ajoute du poids. Mouvement complet : bras tendus → menton au-dessus de la barre.'},
+  {n:'Complexe barre (6 mouvements)',s:4,r:6,rest:180,w:50,m:'Full body, Conditionnement',tip:'Soulevé → rowing → front squat → push press → squat → SDT en enchaîné sans poser la barre. Ultra intense.'},
+ ]},
+{id:'p9',name:'FAT SHREDDER',icon:'🔥',level:'Pro',lieu:'Salle',goal:'poids',color:'#E84C4C',weeks:12,days:6,desc:'Programme sèche avancé. Maintien maximum du muscle pendant le déficit calorique. Volume élevé, cardio intelligent.',
+ tips:['Ne descends pas en dessous de 1g de protéines par livre de poids','Cardio LISS (45min marche) 3x/semaine en plus des séances','Pesée le matin, même heure — évite de paniquer pour les fluctuations journalières','Recharge glucidique 1x/semaine le jour le plus intense'],
+ nutrition:{cal:1900,p:200,g:160,l:55,conseil:'Déficit de 400-500 kcal/jour. Protéines TRÈS élevées pour préserver le muscle. Low carb les jours de repos. Refeed glucidique 1x/semaine.'},
+ exercises:[
+  {n:'Superset Squat / Rowing',s:5,r:12,rest:60,w:80,m:'Full body, Cardio musculaire',tip:'Enchaîne squat et rowing sans repos. Repos de 60s entre les supersets. Maintient la FC élevée pour plus de dépense calorique.'},
+  {n:'Développé couché incliné',s:4,r:15,rest:60,w:60,m:'Pectoraux supérieurs, Épaules',tip:'En sèche : charges modérées, reps élevées, temps sous tension long. Squeeze en haut, descente en 3 secondes.'},
+  {n:'Bulgarian split squat',s:4,r:12,rest:75,w:30,m:'Quadriceps, Fessiers (isolation)',tip:'Pied arrière sur le banc. Descends jusqu\'en bas. Excellent pour les jambes sans compression vertébrale. Douloureux mais efficace.'},
+  {n:'Cable flyes (poitrine)',s:4,r:15,rest:60,w:12,m:'Pectoraux (contraction isolée)',tip:'Grand arc de cercle. Squeeze en bas, tension constante. Parfait pour l\'isolation en sèche.'},
+  {n:'Cardio HIIT vélo (20min)',s:1,r:1200,rest:0,w:0,m:'Cardio, Fat burning',tip:'Protocole Tabata : 8 cycles de 20s max / 10s repos, 4 fois. Science : brûle 9x plus de graisse que le cardio modéré.',timed:true},
+  {n:'Circuit abs (4 exercices)',s:4,r:20,rest:30,w:0,m:'Abdominaux complets',tip:'Crunch + Leg raise + Russian twist + Planche. Sans repos entre les exercices. Les abdos : définition visible avec un faible % de gras.'},
+ ]},
+
+/* ─── PRO MAISON ─── */
+{id:'p10',name:'BEAST MODE HOME',icon:'🏠',level:'Pro',lieu:'Maison',goal:'masse',color:'#C9A84C',weeks:12,days:5,desc:'Prise de masse sans salle ni matériel. Progressivité via variations d\'exercices. Pour les vrais.',
+ tips:['Utilise un sac à dos lesté pour progresser (livres, bouteilles d\'eau)','Muscles à jeun le matin : taux de testostérone plus élevé','Temps sous tension = ta charge quand tu n\'as pas de poids','Progressivité : 1 rep de plus par semaine sur chaque exercice'],
+ nutrition:{cal:3200,p:190,g:370,l:90,conseil:'Surplus modéré. Sans salle, l\'anabolisme vient de la charge mécanique ET nutritionnelle. Oeufs, légumineuses, poisson : tes meilleures sources de protéines accessibles.'},
+ exercises:[
+  {n:'Pompes archer',s:5,r:8,rest:90,w:0,m:'Pectoraux, Triceps, Épaules',tip:'Pompe classique mais déplace le poids sur un bras à la fois. Progression vers la pompe à un bras. Bras de support tendu sur le côté.'},
+  {n:'Traction supination (si barre)',s:5,r:6,rest:120,w:0,m:'Grand dorsal, Biceps',tip:'Pronation = dos. Supination = biceps. Mixte = les deux. Si pas de barre : table rowing ou drap sur porte.'},
+  {n:'Dips sur chaises',s:4,r:12,rest:90,w:0,m:'Triceps, Pectoraux bas',tip:'Deux chaises stables. Corps entre les deux. Descends les bras à 90°. Pieds sur une 3ème chaise pour plus de difficulté.'},
+  {n:'Pistol squat',s:4,r:6,rest:90,w:0,m:'Quadriceps (un seul côté)',tip:'L\'équivalent bodyweight du squat lourd. Très difficile : commence par s\'asseoir sur une chaise basse avec une jambe. Progression graduée.'},
+  {n:'Pompes pike (épaules)',s:4,r:12,rest:75,w:0,m:'Épaules, Trapèzes',tip:'Fessiers très hauts, corps en V inversé. Tête vers le sol entre les mains. Variation : pieds sur un mur pour le handstand push-up.'},
+  {n:'L-sit (2 chaises)',s:3,r:20,rest:90,w:0,m:'Core, Triceps, Hip flexors',tip:'Mains sur les chaises, lève les jambes tendues à 90°. Tiens la position. L\'un des exercices de gainage les plus difficiles.',timed:true},
+ ]},
+{id:'p11',name:'CARDIO WARRIOR',icon:'🏃',level:'Pro',lieu:'Maison',goal:'perf',color:'#4CE8A0',weeks:16,days:6,desc:'Endurance et performance cardiovasculaire maximale. VO2max, explosivité, résistance.',
+ tips:['Surveille ta fréquence cardiaque : zone 2 (60-70% FCmax) pour la base aérobie','Heart rate training : investi dans une ceinture cardiaque','Récupération active : yoga léger, nage, vélo doux les jours de repos','Dormez plus que 8h en périodes d\'entraînement intense'],
+ nutrition:{cal:3800,p:180,g:480,l:95,conseil:'Glucides avant effort long. Gel ou banane pendant les efforts > 60min. Glucides rapides immédiatement après. Ne manque jamais le repas de récup.'},
+ exercises:[
+  {n:'Interval running (20min)',s:1,r:1200,rest:0,w:0,m:'VO2max, Cardio',tip:'1min rapide / 1min lent × 10. Ou progressif : 400m → 800m → 1600m → 1600m → 800m → 400m. Augmente l\'intensité chaque semaine.',timed:true},
+  {n:'Burpee pull-up (si barre)',s:5,r:10,rest:60,w:0,m:'Full body, Explosivité',tip:'Burpee complet + traction à chaque rep. L\'exercice le plus difficile qui soit. Commence par 3 reps si nécessaire.'},
+  {n:'Devil press (haltères)',s:4,r:12,rest:60,w:20,m:'Full body, Épaules',tip:'Burpee avec haltères → au sol → debout → press au-dessus de la tête. Conditionneur ultime de CrossFit.'},
+  {n:'Box step-ups (explosifs)',s:5,r:10,rest:45,w:0,m:'Fessiers, Cardio, Équilibre',tip:'Monte sur la boîte/chaise explosif, redescends lentement. Alterne les jambes. Maintient le rythme cardiaque élevé.'},
+  {n:'Tuck jump',s:5,r:15,rest:45,w:0,m:'Cardio, Explosivité, Jambes',tip:'Saute le plus haut possible, ramène les genoux vers la poitrine. Atterris doucement. Enchaine vite.'},
+  {n:'Tabata final (8 rounds)',s:1,r:240,rest:0,w:0,m:'Cardio max, Fat burning',tip:'20s max / 10s repos × 8. Choisis 1 exercice (burpees ou squat sauté). 4 minutes de l\'enfer. Scientifiquement prouvé.',timed:true},
+ ]},
+{id:'p12',name:'MOBILITÉ ELITE',icon:'🧘',level:'Pro',lieu:'Maison',goal:'forme',color:'#E8CC7A',weeks:8,days:5,desc:'Flexibilité avancée, récupération active et prévention des blessures. Pour les sportifs qui veulent durer.',
+ tips:['Flexibilité passive (étirements) uniquement après l\'effort','Flexibilité active (PNF) le matin à jeun','La mobilité se perd vite mais se retrouve vite','Investis dans un rouleau de mousse : 10min/jour change tout'],
+ nutrition:{cal:2100,p:130,g:230,l:65,conseil:'Alimentation anti-inflammatoire. Curcuma, gingembre, oméga-3 (poisson gras). Évite les aliments ultra-transformés. Hydratation +++.'},
+ exercises:[
+  {n:'Salutation au soleil (×5)',s:3,r:5,rest:30,w:0,m:'Corps entier, Mobilité',tip:'Enchaîne les 12 postures sans pause. Respiration synchronisée avec chaque mouvement. Yogi foundation.'},
+  {n:'Hip 90/90 (chaque côté)',s:3,r:60,rest:30,w:0,m:'Rotation interne/externe de hanche',tip:'Assis, une jambe en avant à 90°, une derrière à 90°. Le meilleur exercice de mobilité de hanche. Pratique quotidien.',timed:true},
+  {n:'Jefferson curl (flexibilité dos)',s:3,r:8,rest:60,w:10,m:'Chaîne postérieure complète',tip:'Très léger poids. Enroule vertèbre par vertèbre vers le bas. Remonte idem. L\'exercice de flexibilité le plus complet pour le dos.'},
+  {n:'Cossack squat (souplesse adducteurs)',s:3,r:10,rest:60,w:0,m:'Adducteurs, Cheville, Hanche',tip:'Squat sur une jambe, l\'autre tendue sur le côté. Pied de la jambe tendue à plat si possible. Progression de mobilité.'},
+  {n:'Shoulder pass-through (élastique)',s:3,r:15,rest:45,w:0,m:'Mobilité épaule, Rotation externe',tip:'Bras tendus. Prise très large. Passe les bras par-dessus la tête et derrière. Réduis la prise progressivement.'},
+  {n:'PNF Hamstrings stretch (5min)',s:1,r:300,rest:0,w:0,m:'Ischio-jambiers, Souplesse',tip:'Contraction 6s → relâchement 30s → aller plus loin. Méthode PNF : la plus efficace scientifiquement pour gagner en souplesse.',timed:true},
+ ]},
+];
+
+const GOALS_DEF = [
+  {k:'masse',l:'Prise de masse 💪',n:'Grossir et prendre du muscle'},
+  {k:'poids',l:'Perte de poids 🔥',n:'Brûler les graisses'},
+  {k:'forme',l:'Forme générale 🧘',n:'Santé et bien-être'},
+  {k:'perf',l:'Performance ⚡',n:'Athlétisme et sport'},
+];
+const LEVELS_DEF = [
+  {k:'Débutant',l:'Débutant',n:'0–1 an d\'expérience',badge:'lbeg'},
+  {k:'Intermédiaire',l:'Intermédiaire',n:'1–3 ans d\'expérience',badge:'lint'},
+  {k:'Pro',l:'Pro',n:'3+ ans d\'expérience',badge:'lpro'},
+];
+const LIEUX_DEF = [{k:'Salle',l:'🏋️ Salle de gym'},{k:'Maison',l:'🏠 Maison / extérieur'},{k:'Les deux',l:'🔁 Les deux'}];
+
+const FOOD_DB = {
+  'Riz basmati cuit':{cal:130,p:2.7,g:28,l:0.3},'Poulet grillé':{cal:165,p:31,g:0,l:3.6},
+  'Saumon grillé':{cal:208,p:20,g:0,l:13},'Oeuf entier':{cal:68,p:6,g:0.6,l:4.8},
+  'Whey protéine':{cal:120,p:24,g:3,l:1.5},'Avocat (½)':{cal:120,p:1.5,g:6,l:11},
+  'Patate douce':{cal:86,p:1.6,g:20,l:0.1},'Flocons d\'avoine':{cal:150,p:5,g:27,l:3},
+  'Yaourt grec 0%':{cal:59,p:10,g:3.6,l:0.4},'Banane':{cal:89,p:1.1,g:23,l:0.3},
+  'Thon naturel':{cal:100,p:22,g:0,l:1},'Amandes (30g)':{cal:173,p:6,g:6,l:15},
+  'Lentilles cuites':{cal:116,p:9,g:20,l:0.4},'Haricots rouges':{cal:127,p:8.7,g:22,l:0.5},
+  'Pain complet':{cal:80,p:4,g:15,l:1},'Beurre de cacahuète':{cal:188,p:8,g:6,l:16},
+  'Lait écrémé':{cal:35,p:3.4,g:5,l:0.1},'Tomate':{cal:18,p:0.9,g:3.9,l:0.2},
+  'Épinards':{cal:23,p:2.9,g:3.6,l:0.4},'Maquereau':{cal:205,p:19,g:0,l:14},
+};
+
+/* ══════════════════════════════════
+   STATE
+══════════════════════════════════ */
+let P = {name:'',goal:'masse',level:'Débutant',lieu:'Salle',calGoal:2400,protGoal:160};
+let HIST = [], WLOG = [], NUTR = [], FILTER = 'all';
+let CW = null; // current workout
+let wInterval = null, restInterval = null;
+
+/* ══════════════════════════════════
+   CODE SYSTÈME MENSUEL
+══════════════════════════════════ */
+function getMCode(offset=0){
+  const d=new Date(); d.setMonth(d.getMonth()+offset);
+  const mm=String(d.getMonth()+1).padStart(2,'0');
+  const yy=String(d.getFullYear()).slice(-2);
+  return 'NLXX-'+mm+yy;
+}
+const VALID_CODES=[getMCode(0),getMCode(1),'NLXX-ADMIN2026'];
+
+/* ══════════════════════════════════
+   PAYWALL
+══════════════════════════════════ */
+function openPW(){document.getElementById('pw').classList.add('on');document.body.style.overflow='hidden';}
+function closePW(){document.getElementById('pw').classList.remove('on');document.body.style.overflow='';}
+function selectM(m,el){
+  document.querySelectorAll('.pmeth').forEach(e=>{e.style.opacity='.45';e.style.transform='';});
+  el.style.opacity='1';el.style.transform='scale(1.04)';
+  document.getElementById('ps2').style.display='flex';
+  document.getElementById('ps3').style.display='flex';
+}
+function fmtCin(input){
+  let v=input.value.replace(/[^a-zA-Z0-9]/g,'').toUpperCase();
+  if(v.length>4)v=v.slice(0,4)+'-'+v.slice(4,8);
+  input.value=v;
+}
+function verifCode(){
+  const code=document.getElementById('cin').value.trim().toUpperCase();
+  const err=document.getElementById('cerr'),suc=document.getElementById('csuc');
+  err.style.display='none';suc.style.display='none';
+  if(VALID_CODES.includes(code)){
+    suc.style.display='block';
+    setTimeout(()=>{closePW();startOnboarding();},1100);
+  } else {
+    err.style.display='block';
+    document.getElementById('cin').style.borderColor='#E84C4C';
+    setTimeout(()=>{document.getElementById('cin').style.borderColor='';},1500);
+  }
+}
+
+/* ══════════════════════════════════
+   ONBOARDING
+══════════════════════════════════ */
+let onbStep=0;
+const onbSteps=[
+  {title:'TON OBJECTIF',sub:'Pourquoi tu t\'entraînes ?',type:'goal'},
+  {title:'TON NIVEAU',sub:'Depuis combien de temps tu fais du sport ?',type:'level'},
+  {title:'OÙ T\'ENTRAÎNES-TU ?',sub:'Salle, maison ou les deux ?',type:'lieu'},
+  {title:'TON PRÉNOM',sub:'Pour personnaliser ton expérience',type:'name'},
+];
+
+function startOnboarding(){
+  onbStep=0;
+  document.getElementById('onb').classList.add('on');
+  renderOnbStep();
+}
+
+function renderOnbStep(){
+  const step=onbSteps[onbStep];
+  const dots=document.getElementById('stepDots');
+  dots.innerHTML=onbSteps.map((_,i)=>`<div style="height:3px;width:${i===onbStep?28:8}px;border-radius:3px;background:${i<=onbStep?'var(--gold)':'var(--b)'};transition:all .3s"></div>`).join('');
+  document.getElementById('backBtn').style.display=onbStep>0?'block':'none';
+  document.getElementById('nextBtn').textContent=onbStep===onbSteps.length-1?'COMMENCER →':'SUIVANT →';
+  const c=document.getElementById('onbContent');
+  c.innerHTML=`<div class="bc" style="font-size:30px;font-weight:900;margin-bottom:4px">${step.title}</div><div style="font-size:13px;color:var(--m);margin-bottom:20px">${step.sub}</div>`;
+  if(step.type==='goal'){
+    GOALS_DEF.forEach(g=>{
+      const d=document.createElement('div');
+      d.className='card';d.style.cssText=`padding:16px 18px;cursor:pointer;border-color:${P.goal===g.k?'var(--gold)':'var(--b)'};display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:border-color .2s`;
+      d.innerHTML=`<div style="width:22px;height:22px;border-radius:50%;background:${P.goal===g.k?'var(--gold)':'transparent'};border:2px solid ${P.goal===g.k?'var(--gold)':'var(--b)'};flex-shrink:0;transition:all .2s"></div><div><div style="font-weight:600;font-size:15px;color:${P.goal===g.k?'var(--text)':'var(--ml)'}">${g.l}</div><div style="font-size:12px;color:var(--m);margin-top:1px">${g.n}</div></div>`;
+      d.onclick=()=>{P.goal=g.k;renderOnbStep();};
+      c.appendChild(d);
+    });
+  } else if(step.type==='level'){
+    LEVELS_DEF.forEach(l=>{
+      const d=document.createElement('div');
+      d.className='card';d.style.cssText=`padding:16px 18px;cursor:pointer;border-color:${P.level===l.k?'var(--gold)':'var(--b)'};display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:border-color .2s`;
+      d.innerHTML=`<div style="width:22px;height:22px;border-radius:50%;background:${P.level===l.k?'var(--gold)':'transparent'};border:2px solid ${P.level===l.k?'var(--gold)':'var(--b)'};flex-shrink:0;transition:all .2s"></div><div><div style="font-weight:600;font-size:15px;color:${P.level===l.k?'var(--text)':'var(--ml)'}">${l.l}</div><div style="font-size:12px;color:var(--m);margin-top:1px">${l.n}</div></div>`;
+      d.onclick=()=>{P.level=l.k;renderOnbStep();};
+      c.appendChild(d);
+    });
+  } else if(step.type==='lieu'){
+    LIEUX_DEF.forEach(l=>{
+      const d=document.createElement('div');
+      d.className='card';d.style.cssText=`padding:16px 18px;cursor:pointer;border-color:${P.lieu===l.k?'var(--gold)':'var(--b)'};display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:border-color .2s`;
+      d.innerHTML=`<div style="width:22px;height:22px;border-radius:50%;background:${P.lieu===l.k?'var(--gold)':'transparent'};border:2px solid ${P.lieu===l.k?'var(--gold)':'var(--b)'};flex-shrink:0;transition:all .2s"></div><div style="font-weight:600;font-size:15px;color:${P.lieu===l.k?'var(--text)':'var(--ml)'}">${l.l}</div>`;
+      d.onclick=()=>{P.lieu=l.k;renderOnbStep();};
+      c.appendChild(d);
+    });
+  } else if(step.type==='name'){
+    const inp=document.createElement('input');
+    inp.type='text';inp.placeholder='Ton prénom';inp.value=P.name;inp.style.cssText='font-size:18px;padding:14px 16px;margin-top:4px';
+    inp.oninput=()=>P.name=inp.value;
+    c.appendChild(inp);
+  }
+}
+
+function onbNext(){
+  if(onbStep<onbSteps.length-1){onbStep++;renderOnbStep();}
+  else{
+    document.getElementById('onb').classList.remove('on');
+    document.getElementById('landing').style.display='none';
+    document.getElementById('app').classList.add('on');
+    initApp();
+  }
+}
+function onbBack(){if(onbStep>0){onbStep--;renderOnbStep();}}
+
+/* ══════════════════════════════════
+   APP INIT
+══════════════════════════════════ */
+function initApp(){
+  updateKPI();renderProgs();renderPlan();renderNut();renderWChart();renderHist();
+}
+
+function updateKPI(){
+  const n=P.name||'toi';
+  const h=new Date().getHours();
+  const gr=h<12?'Bonjour':'h<18'?'Bon après-midi':'Bonsoir';
+  document.getElementById('appSub').textContent=(h<12?'Bonjour':h<18?'Bon après-midi':'Bonsoir')+', '+(P.name||'champion') +' 👋';
+  document.getElementById('pName').textContent=P.name||'Mon profil';
+  document.getElementById('pAvatar').textContent=(P.name||'U')[0].toUpperCase();
+  document.getElementById('pLevel').textContent=P.level;
+  document.getElementById('pGoal').textContent=GOALS_DEF.find(g=>g.k===P.goal)?.l||'';
+  document.getElementById('pLieu').textContent=P.lieu;
+  document.getElementById('kSes').textContent=HIST.length;
+  document.getElementById('kCal').textContent=HIST.reduce((a,h)=>a+h.cal,0);
+  const w=WLOG;document.getElementById('kW').textContent=w.length?w[w.length-1].weight+' kg':'—';
+}
+
+/* ══════════════════════════════════
+   PROGRAMS
+══════════════════════════════════ */
+function getFilteredProgs(){
+  let progs=PROGS;
+  if(FILTER!=='all'){
+    if(FILTER==='salle')progs=progs.filter(p=>p.lieu==='Salle'||p.lieu==='Salle+');
+    else if(FILTER==='maison')progs=progs.filter(p=>p.lieu==='Maison');
+    else progs=progs.filter(p=>p.goal===FILTER);
+  }
+  // Filtre par niveau et lieu selon profil
+  return progs;
+}
+
+function renderProgs(){
+  // Filters
+  const fr=document.getElementById('filterRow');
+  const filters=[{k:'all',l:'Tous'},{k:'masse',l:'💪 Masse'},{k:'poids',l:'🔥 Poids'},{k:'forme',l:'🧘 Forme'},{k:'perf',l:'⚡ Perf'},{k:'salle',l:'🏋️ Salle'},{k:'maison',l:'🏠 Maison'}];
+  fr.innerHTML='';
+  filters.forEach(f=>{
+    const d=document.createElement('div');
+    d.className='chip';d.textContent=f.l;
+    const sel=FILTER===f.k;
+    d.style.cssText=`border-color:${sel?'var(--gold)':'var(--b)'};background:${sel?'rgba(201,168,76,.12)':'var(--s)'};color:${sel?'var(--gold)':'var(--m)'};cursor:pointer;white-space:nowrap`;
+    d.onclick=()=>{FILTER=f.k;renderProgs();};
+    fr.appendChild(d);
+  });
+
+  const grid=document.getElementById('progGrid');
+  const progs=getFilteredProgs();
+  grid.innerHTML='';
+  // Sort : user's level first
+  const levelOrder={Débutant:1,Intermédiaire:2,Pro:3};
+  const sorted=[...progs].sort((a,b)=>{
+    const al=levelOrder[a.level]||2,bl=levelOrder[b.level]||2;
+    const userL=levelOrder[P.level]||1;
+    return Math.abs(al-userL)-Math.abs(bl-userL);
+  });
+
+  sorted.forEach(p=>{
+    const badgeClass=p.level==='Débutant'?'lbeg':p.level==='Pro'?'lpro':'lint';
+    const isMyLieu=P.lieu==='Les deux'||(P.lieu==='Salle'&&(p.lieu==='Salle'||p.lieu==='Salle+'))||(P.lieu==='Maison'&&p.lieu==='Maison');
+    const d=document.createElement('div');
+    d.className='pgcard';
+    d.style.borderColor=p.color+'33';
+    d.innerHTML=`
+      <div style="position:absolute;right:-8px;top:-8px;font-size:70px;opacity:.04">${p.icon}</div>
+      <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
+        <div style="width:50px;height:50px;border-radius:13px;background:${p.color}18;border:1px solid ${p.color}44;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${p.icon}</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+            <div class="bc" style="font-size:19px;font-weight:800;letter-spacing:1px">${p.name}</div>
+            <span class="lbadge ${badgeClass}">${p.level}</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-size:11px;color:var(--m)">${p.lieu}</span>
+            <span style="font-size:11px;color:var(--m)">·</span>
+            <span style="font-size:11px;color:var(--m)">${p.weeks} sem.</span>
+            <span style="font-size:11px;color:var(--m)">·</span>
+            <span style="font-size:11px;color:var(--m)">${p.days}j/sem</span>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--ml);line-height:1.6;margin-bottom:12px">${p.desc}</div>
+      <div style="margin-bottom:14px">
+        ${p.tips.slice(0,2).map(t=>`<div style="display:flex;align-items:flex-start;gap:7px;margin-bottom:5px"><span style="color:var(--gold);flex-shrink:0;font-size:12px">→</span><span style="font-size:11px;color:var(--ml);line-height:1.5">${t}</span></div>`).join('')}
+      </div>
+      <div style="height:2px;background:var(--b);border-radius:2px;margin-bottom:14px"><div style="height:100%;width:20%;background:linear-gradient(90deg,${p.color}88,${p.color});border-radius:2px"></div></div>
+      <button onclick="startWorkout('${p.id}')" class="bp" style="width:100%;padding:12px;border-radius:10px;font-size:16px;letter-spacing:2px">▶ DÉMARRER LA SÉANCE</button>
+    `;
+    d.onmouseenter=()=>d.style.borderColor=p.color+'88';
+    d.onmouseleave=()=>d.style.borderColor=p.color+'33';
+    grid.appendChild(d);
+  });
+}
+
+/* ══════════════════════════════════
+   WORKOUT ENGINE
+══════════════════════════════════ */
+function startWorkout(pid){
+  const prog=PROGS.find(p=>p.id===pid);
+  if(!prog)return;
+  CW={prog,exIdx:0,setNum:1,completedSets:{},elapsed:0};
+  document.getElementById('wm').classList.add('on');
+  document.body.style.overflow='hidden';
+  clearInterval(wInterval);
+  wInterval=setInterval(()=>{CW.elapsed++;document.getElementById('wTimer').textContent=fmtT(CW.elapsed);},1000);
+  renderWEx();
+}
+
+function renderWEx(){
+  const {prog,exIdx,setNum}=CW;
+  const ex=prog.exercises[exIdx];
+  const pct=Math.round(exIdx/prog.exercises.length*100);
+  document.getElementById('wProgName').textContent=prog.icon+' '+prog.name;
+  document.getElementById('wBar').style.width=pct+'%';
+  document.getElementById('wExCnt').textContent=`Exercice ${exIdx+1}/${prog.exercises.length}`;
+  document.getElementById('wPct').textContent=pct+'%';
+  document.getElementById('exName').textContent=ex.n;
+  document.getElementById('exMuscles').textContent=ex.m;
+  document.getElementById('exSetCur').textContent=setNum;
+  document.getElementById('exSetTot').textContent='/ '+ex.s+' séries';
+  document.getElementById('exReps').textContent=ex.r;
+  document.getElementById('exRepsL').textContent=ex.timed?'Secondes':'Répétitions';
+  document.getElementById('exRest').textContent=ex.rest;
+  document.getElementById('exTip').textContent='💡 '+ex.tip;
+  // Exercise image
+  const imgContainer = document.getElementById('exImgContainer');
+  const imgEl = document.getElementById('exImg');
+  const gifEl = document.getElementById('exGif');
+  // Use Wger API for exercise images (free, no auth needed)
+  // Images d'exercices — sources fiables et libres
+  const exImages = {
+    'Squat':         {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Squat_MT.jpg/320px-Squat_MT.jpg'},
+    'Développé':     {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Bench_press_2.jpg/320px-Bench_press_2.jpg'},
+    'Soulevé':       {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Conventional_deadlift.jpg/320px-Conventional_deadlift.jpg'},
+    'Burpee':        {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Burpee.jpg/320px-Burpee.jpg'},
+    'Pompe':         {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Push_up.svg/320px-Push_up.svg.png'},
+    'Mountain':      {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mountain_climbers.jpg/320px-Mountain_climbers.jpg'},
+    'Planche':       {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Plank_MT.jpg/320px-Plank_MT.jpg'},
+    'Traction':      {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pull_up_1.jpg/320px-Pull_up_1.jpg'},
+    'Hip':           {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hip_thrust_2.jpg/320px-Hip_thrust_2.jpg'},
+    'Curl':          {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bicep_curl.jpg/320px-Bicep_curl.jpg'},
+    'Fente':         {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lunge_MT.jpg/320px-Lunge_MT.jpg'},
+    'Rowing':        {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Bent_over_row.jpg/320px-Bent_over_row.jpg'},
+    'Crunch':        {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Crunches_MT.jpg/320px-Crunches_MT.jpg'},
+    'Sprint':        {img:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sprint_start.jpg/320px-Sprint_start.jpg'},
+    'default':       {img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=320&q=80'},
+  };
+  const exKey = Object.keys(exImages).find(k => k !== 'default' && ex.n.toLowerCase().includes(k.toLowerCase()));
+  const imgData = exImages[exKey] || exImages['default'];
+  imgContainer.style.display='block';
+  gifEl.style.display='none';
+  imgEl.src = imgData.img;
+  imgEl.style.display='block';
+  imgEl.onerror = () => {
+    imgEl.src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=320&q=80';
+  };
+  const wb=document.getElementById('exWBadge');
+  if(ex.w>0){wb.style.display='inline-block';document.getElementById('exWTxt').textContent='⚖ '+ex.w+' kg';}
+  else wb.style.display='none';
+  const dots=document.getElementById('setDots');
+  dots.innerHTML='';
+  for(let i=1;i<=ex.s;i++){
+    const dot=document.createElement('div');
+    dot.style.cssText=`flex:1;height:4px;border-radius:2px;background:${CW.completedSets[exIdx+'-'+i]?'var(--gold)':i===setNum?'rgba(201,168,76,.4)':'var(--b)'};transition:background .3s`;
+    dots.appendChild(dot);
+  }
+  const nc=document.getElementById('nextExCard');
+  if(exIdx<prog.exercises.length-1){
+    const nex=prog.exercises[exIdx+1];
+    nc.style.display='flex';
+    document.getElementById('nextExName').textContent=nex.n;
+    document.getElementById('nextExDet').textContent=`${nex.s}×${nex.r} — ${nex.m}`;
+  } else nc.style.display='none';
+}
+
+function completeSet(){
+  const {prog,exIdx,setNum}=CW;
+  const ex=prog.exercises[exIdx];
+  CW.completedSets[exIdx+'-'+setNum]=true;
+  if(setNum<ex.s){CW.setNum++;startRest(ex.rest);}
+  else if(exIdx<prog.exercises.length-1){CW.exIdx++;CW.setNum=1;startRest(ex.rest);}
+  else {
+    clearInterval(wInterval);
+    const dur=Math.round(CW.elapsed/60);
+    const cal=Math.round(dur*8.5);
+    const sets=prog.exercises.reduce((a,e)=>a+e.s,0);
+    HIST.unshift({id:'h'+Date.now(),progName:prog.name,progIcon:prog.icon,progColor:prog.color,date:new Date().toISOString().slice(0,10),dur,cal,sets});
+    document.getElementById('wm').classList.remove('on');
+    document.body.style.overflow='';
+    updateKPI();renderHist();
+    showDone(prog,dur,cal,sets);
+  }
+}
+
+function startRest(sec){
+  clearInterval(restInterval);
+  let r=sec;
+  document.getElementById('rc').textContent=r;
+  document.getElementById('ro').classList.add('on');
+  restInterval=setInterval(()=>{
+    r--;document.getElementById('rc').textContent=r;
+    if(r<=0){clearInterval(restInterval);document.getElementById('ro').classList.remove('on');renderWEx();}
+  },1000);
+}
+function skipRest(){clearInterval(restInterval);document.getElementById('ro').classList.remove('on');renderWEx();}
+function quitW(){
+  clearInterval(wInterval);clearInterval(restInterval);
+  document.getElementById('wm').classList.remove('on');
+  document.getElementById('ro').classList.remove('on');
+  document.body.style.overflow='';
+}
+function showDone(prog,dur,cal,sets){
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:3500;background:rgba(5,6,8,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;animation:fadeIn .3s ease';
+  ov.innerHTML=`
+    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--gd),var(--gl));display:flex;align-items:center;justify-content:center;font-size:34px;margin-bottom:18px">${prog.icon}</div>
+    <div class="bc gt" style="font-size:50px;font-weight:900;letter-spacing:3px;line-height:1">SÉANCE</div>
+    <div class="bc gt" style="font-size:50px;font-weight:900;letter-spacing:3px;line-height:1;margin-bottom:8px">TERMINÉE</div>
+    <p style="color:var(--ml);font-size:13px;margin-bottom:30px">${prog.name}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:340px;margin-bottom:26px">
+      ${[['⏱','Durée',fmtT(dur*60),'var(--gold)'],['🔥','Calories','~'+cal,'#E84C4C'],['🎯','Exercices',prog.exercises.length,'#4C9CE8'],['💪','Séries',sets,'#4CE8A0']].map(([ic,l,v,c])=>`<div class="cardg" style="padding:16px;text-align:center"><div style="font-size:24px;margin-bottom:7px">${ic}</div><div class="bc" style="font-size:28px;font-weight:800;color:${c}">${v}</div><div style="font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px">${l}</div></div>`).join('')}
+    </div>
+    <div class="cardg" style="padding:14px 18px;width:100%;max-width:340px;margin-bottom:22px;text-align:left">
+      <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Conseil récupération</div>
+      <div style="font-size:13px;color:var(--ml);line-height:1.6;font-style:italic">Mange des protéines dans les 30 minutes. Étire-toi 10 minutes. Hydrate-toi. Dors au moins 7h cette nuit pour maximiser la récupération musculaire. 💤</div>
+    </div>
+    <button onclick="this.parentElement.remove()" class="bp" style="width:100%;max-width:340px;padding:15px;border-radius:12px;font-size:18px;letter-spacing:3px">RETOUR AU DASHBOARD</button>
+  `;
+  document.body.appendChild(ov);
+}
+
+/* ══════════════════════════════════
+   NUTRITION
+══════════════════════════════════ */
+function renderNut(){
+  const today=new Date().toISOString().slice(0,10);
+  const items=NUTR.filter(n=>n.date===today);
+  const tCal=items.reduce((a,n)=>a+n.cal,0);
+  const tP=items.reduce((a,n)=>a+n.p,0);
+  const tG=items.reduce((a,n)=>a+n.g,0);
+  const tL=items.reduce((a,n)=>a+n.l,0);
+  const cg=P.calGoal;
+  document.getElementById('nutSub').textContent=`Objectif : ${cg.toLocaleString('fr-FR')} kcal / jour`;
+  document.getElementById('totCal').textContent=Math.round(tCal);
+  document.getElementById('calPct').textContent=Math.round(tCal/cg*100)+'%';
+  document.getElementById('calRing').style.strokeDashoffset=213.6*(1-Math.min(tCal/cg,1));
+  document.getElementById('macroBars').innerHTML=[
+    {l:'Protéines',v:tP,goal:P.protGoal,c:'#E84C4C'},
+    {l:'Glucides',v:tG,goal:cg*.12,c:'var(--gold)'},
+    {l:'Lipides',v:tL,goal:cg*.03,c:'#4C9CE8'},
+  ].map(m=>`<div style="margin-top:7px"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:10px;color:var(--m)">${m.l}</span><span style="font-size:10px;color:${m.c}">${Math.round(m.v)}g</span></div><div style="height:3px;background:var(--b);border-radius:2px"><div style="height:100%;width:${Math.min(m.v/m.goal*100,100)}%;background:${m.c};border-radius:2px;transition:width .5s"></div></div></div>`).join('');
+
+  // Plan nutri selon objectif
+  const prog=PROGS.find(p=>p.goal===P.goal&&p.level===P.level)||PROGS[0];
+  const nutPl=document.getElementById('nutPlan');
+  nutPl.innerHTML=`
+    <div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Plan nutritionnel — ${prog.name}</div>
+    <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+      ${[['🔥',prog.nutrition.cal,'kcal/jour'],['🥩',prog.nutrition.p+'g','protéines'],['🌾',prog.nutrition.g+'g','glucides'],['🫒',prog.nutrition.l+'g','lipides']].map(([ic,v,l])=>`<div style="flex:1;min-width:60px;background:var(--card);border-radius:10px;padding:10px;text-align:center;border:1px solid var(--b)"><div style="font-size:16px;margin-bottom:3px">${ic}</div><div class="bc" style="font-size:16px;font-weight:700;color:var(--gold)">${v}</div><div style="font-size:9px;color:var(--m)">${l}</div></div>`).join('')}
+    </div>
+    <div style="font-size:12px;color:var(--ml);line-height:1.65;font-style:italic">💡 ${prog.nutrition.conseil}</div>
+  `;
+
+  const log=document.getElementById('foodLog');
+  if(!items.length){log.innerHTML=`<div style="text-align:center;padding:32px 0"><div style="font-size:34px;margin-bottom:8px">🍽️</div><p style="font-size:13px;color:var(--m)">Aucun aliment enregistré aujourd'hui</p></div>`;return;}
+  log.innerHTML='';
+  items.forEach(item=>{
+    const d=document.createElement('div');
+    d.className='card';d.style.cssText='padding:12px 15px;margin-bottom:8px;display:flex;align-items:center;gap:11px';
+    d.innerHTML=`<div style="width:38px;height:38px;border-radius:11px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">🥗</div><div style="flex:1"><div style="font-weight:600;font-size:13px">${item.name}</div><div style="font-size:10px;color:var(--m);margin-top:2px">${item.p}g P · ${item.g}g G · ${item.l}g L</div></div><div style="text-align:right"><div class="bc" style="font-size:20px;font-weight:700;color:var(--gold)">${item.cal}</div><div style="font-size:9px;color:var(--m)">kcal</div></div><button onclick="removeFood('${item.id}')" style="background:none;border:none;color:var(--m);cursor:pointer;font-size:15px;padding:4px;transition:color .2s" onmouseover="this.style.color='#E84C4C'" onmouseout="this.style.color='var(--m)'">✕</button>`;
+    log.appendChild(d);
+  });
+}
+function srchFood(q){
+  const el=document.getElementById('foodRes');
+  if(!q){el.style.display='none';return;}
+  const matches=Object.keys(FOOD_DB).filter(f=>f.toLowerCase().includes(q.toLowerCase()));
+  if(!matches.length){el.style.display='none';return;}
+  el.style.display='block';
+  el.innerHTML=matches.map(f=>`<div class="fitem" onclick="addFood('${f}')"><span style="font-size:13px">${f}</span><span style="font-size:11px;color:var(--gold)">${FOOD_DB[f].cal} kcal · ${FOOD_DB[f].p}g prot</span></div>`).join('');
+}
+function addFood(name){
+  const f=FOOD_DB[name];
+  NUTR.push({id:'f'+Date.now(),name,date:new Date().toISOString().slice(0,10),qty:1,...f});
+  document.getElementById('foodSrch').value='';
+  document.getElementById('foodRes').style.display='none';
+  renderNut();
+}
+function removeFood(id){NUTR=NUTR.filter(x=>x.id!==id);renderNut();}
+
+/* ══════════════════════════════════
+   POIDS
+══════════════════════════════════ */
+function addW(){
+  const v=parseFloat(document.getElementById('newW').value);
+  if(!v)return;
+  WLOG.push({date:new Date().toISOString().slice(0,10),weight:v});
+  document.getElementById('newW').value='';
+  renderWChart();updateKPI();
+}
+function renderWChart(){
+  const log=WLOG;
+  const svg=document.getElementById('wChart');
+  const lEl=document.getElementById('wLabels');
+  const vEl=document.getElementById('wVar');
+  const logEl=document.getElementById('wLog');
+  if(log.length<2){svg.innerHTML=`<text x="50%" y="50%" fill="var(--m)" text-anchor="middle" font-family="DM Sans" font-size="13">Ajoute au moins 2 pesées pour voir la courbe</text>`;lEl.innerHTML='';vEl.innerHTML='';logEl.innerHTML='';return;}
+  const W=400,H=88,vals=log.map(w=>w.weight),min=Math.min(...vals)-1,max=Math.max(...vals)+1;
+  const pts=log.map((w,i)=>({x:i*(W/(log.length-1)),y:H-((w.weight-min)/(max-min))*(H-10)-5}));
+  const path=pts.map((p,i)=>i===0?`M ${p.x} ${p.y}`:`C ${pts[i-1].x+W/(log.length-1)*.3} ${pts[i-1].y},${p.x-W/(log.length-1)*.3} ${p.y},${p.x} ${p.y}`).join(' ');
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('preserveAspectRatio','none');
+  svg.innerHTML=`<defs><linearGradient id="wg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A84C" stop-opacity="0.25"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs><path d="${path} L ${pts[pts.length-1].x} ${H} L 0 ${H} Z" fill="url(#wg3)"/><path d="${path}" fill="none" stroke="var(--gold)" stroke-width="2.5"/>${pts.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="${i===pts.length-1?'var(--gl)':'var(--gold)'}" />`).join('')}`;
+  lEl.innerHTML=log.map(w=>`<div style="flex:1;text-align:center"><div style="font-size:8px;color:var(--m)">${w.date.slice(5)}</div><div class="bc" style="font-size:13px;font-weight:700">${w.weight}</div></div>`).join('');
+  const diff=(log[log.length-1].weight-log[0].weight).toFixed(1);
+  vEl.innerHTML=`<div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--s);border-radius:9px;margin-top:8px"><span style="font-size:12px;color:var(--m)">Variation totale</span><span class="bc" style="font-size:20px;font-weight:800;color:${diff<0?'#4CE8A0':'#E84C4C'}">${diff} kg</span></div>`;
+  logEl.innerHTML=[...log].reverse().map((w,i)=>`<div class="card" style="padding:11px 15px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:12px;color:var(--m)">${w.date}</span><div style="display:flex;align-items:baseline;gap:5px"><span class="bc" style="font-size:24px;font-weight:800;color:${i===0?'var(--gold)':'var(--text)'}">${w.weight}</span><span style="font-size:11px;color:var(--m)">kg</span></div></div>`).join('');
+}
+
+/* ══════════════════════════════════
+   HISTORIQUE
+══════════════════════════════════ */
+function renderHist(){
+  document.getElementById('histSub').textContent=HIST.length+' séance'+(HIST.length>1?'s':'')+' enregistrée'+(HIST.length>1?'s':'');
+  document.getElementById('histKpi').innerHTML=[
+    {l:'Séances',v:HIST.length,c:'var(--gold)'},
+    {l:'Calories',v:HIST.reduce((a,h)=>a+h.cal,0),c:'#E84C4C'},
+    {l:'Minutes',v:HIST.reduce((a,h)=>a+h.dur,0),c:'#4C9CE8'},
+    {l:'Séries',v:HIST.reduce((a,h)=>a+h.sets,0),c:'#4CE8A0'},
+  ].map(s=>`<div class="card" style="padding:15px"><div class="bc" style="font-size:30px;font-weight:800;color:${s.c}">${s.v}</div><div style="font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:1px;margin-top:3px">${s.l}</div></div>`).join('');
+  const el=document.getElementById('histList');
+  if(!HIST.length){el.innerHTML=`<div style="text-align:center;padding:36px 0"><div style="font-size:34px;margin-bottom:8px">📅</div><p style="font-size:13px;color:var(--m)">Commence ta première séance !</p></div>`;return;}
+  el.innerHTML=HIST.map((h,i)=>`<div class="card" style="padding:14px;margin-bottom:9px;display:flex;gap:12px;align-items:center;${i===0?'border-color:rgba(201,168,76,.3)':''}"><div style="width:44px;height:44px;border-radius:12px;background:${h.progColor||'var(--gold)'}18;border:1px solid ${h.progColor||'var(--gold)'}44;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${h.progIcon||'🏋️'}</div><div style="flex:1"><div class="bc" style="font-size:17px;font-weight:700;letter-spacing:1px">${h.progName}</div><div style="font-size:11px;color:var(--m);margin-top:1px">${h.date} · ${h.dur} min · ${h.sets} séries</div></div><div style="text-align:right"><div class="bc" style="font-size:20px;font-weight:800;color:#E84C4C">${h.cal}</div><div style="font-size:9px;color:var(--m)">kcal</div></div></div>`).join('');
+}
+
+/* ══════════════════════════════════
+   PROFIL
+══════════════════════════════════ */
+function renderPlan(){
+  document.getElementById('pnInput').value=P.name;
+  const chips=(id,items,current,setCurrent,labelFn,valFn,classExtra='')=>{
+    const el=document.getElementById(id);el.innerHTML='';
+    items.forEach(item=>{
+      const d=document.createElement('div');d.className='chip';
+      const val=valFn(item),sel=current===val;
+      d.textContent=labelFn(item);
+      d.style.cssText=`border-color:${sel?'var(--gold)':'var(--b)'};background:${sel?'rgba(201,168,76,.12)':'var(--s)'};color:${sel?'var(--gold)':'var(--m)'};cursor:pointer;margin-bottom:6px`;
+      d.onclick=()=>{setCurrent(val);renderPlan();};
+      el.appendChild(d);
+    });
+  };
+  chips('goalChips',GOALS_DEF,P.goal,v=>P.goal=v,g=>g.l,g=>g.k);
+  chips('levelChips',LEVELS_DEF,P.level,v=>P.level=v,l=>l.l,l=>l.k);
+  chips('lieuChips',LIEUX_DEF,P.lieu,v=>P.lieu=v,l=>l.l,l=>l.k);
+  const calC=document.getElementById('calChips');calC.innerHTML='';
+  [1800,2000,2200,2400,2800,3200].forEach(v=>{
+    const d=document.createElement('div'),sel=P.calGoal===v;
+    d.style.cssText=`flex:1;min-width:55px;padding:9px 4px;text-align:center;border-radius:9px;border:1px solid ${sel?'var(--gold)':'var(--b)'};background:${sel?'rgba(201,168,76,.12)':'var(--s)'};cursor:pointer;transition:all .2s`;
+    d.innerHTML=`<div class="bc" style="font-size:15px;font-weight:700;color:${sel?'var(--gold)':'var(--m)'}">${v}</div><div style="font-size:9px;color:var(--m)">kcal</div>`;
+    d.onclick=()=>{P.calGoal=v;renderPlan();};calC.appendChild(d);
+  });
+  const pC=document.getElementById('protChips');pC.innerHTML='';
+  [100,120,140,160,180,200].forEach(v=>{
+    const d=document.createElement('div'),sel=P.protGoal===v;
+    d.style.cssText=`flex:1;min-width:50px;padding:9px 4px;text-align:center;border-radius:9px;border:1px solid ${sel?'var(--gold)':'var(--b)'};background:${sel?'rgba(201,168,76,.12)':'var(--s)'};cursor:pointer;transition:all .2s`;
+    d.innerHTML=`<div class="bc" style="font-size:15px;font-weight:700;color:${sel?'var(--gold)':'var(--m)'}">${v}g</div>`;
+    d.onclick=()=>{P.protGoal=v;renderPlan();};pC.appendChild(d);
+  });
+}
+function saveProfil(){P.name=document.getElementById('pnInput').value;updateKPI();renderProgs();renderNut();showTab('tProg',document.querySelector('.atab'));toast('Profil mis à jour ✓');}
+
+/* ══════════════════════════════════
+   HELPERS
+══════════════════════════════════ */
+function showTab(id,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.atab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  if(id==='tNut')renderNut();
+  if(id==='tSuivi')renderWChart();
+  if(id==='tHist')renderHist();
+  if(id==='tPlan')renderPlan();
+}
+function fmtT(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2500);}
+
+/* ══════════════════════════════════
+   ANIMATIONS LANDING
+══════════════════════════════════ */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.08});
+document.querySelectorAll('.fcard,.tcard').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});});
+</script>
+
+<div id="installBanner" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;background:linear-gradient(135deg,#9A7A30,#C9A84C,#E8CC7A);border-radius:50px;padding:12px 24px;gap:12px;align-items:center;box-shadow:0 4px 24px rgba(201,168,76,.4);white-space:nowrap">
+  <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#000">📲 Installer l'app NOLIMITXX</span>
+  <button onclick="installApp()" style="background:#000;color:var(--gold);border:none;border-radius:50px;padding:6px 16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:2px;cursor:pointer">INSTALLER</button>
+  <button onclick="document.getElementById('installBanner').style.display='none'" style="background:none;border:none;color:#000;cursor:pointer;font-size:16px">✕</button>
+</div>
+<script>
+// PWA Service Worker Registration
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(err){
+      console.log('SW failed: ', err);
+    });
+  });
+}
+
+// PWA Install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBanner').style.display = 'flex';
+});
+
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(()=>{ document.getElementById('installBanner').style.display='none'; deferredPrompt=null; });
+  }
+}
+</script>
+</body>
+</html>
