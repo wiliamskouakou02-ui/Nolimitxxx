@@ -1,0 +1,11 @@
+<!-- À placer dans <head> -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c9a44c">
+
+<!-- À placer avant </body> -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Service Worker enregistré'));
+}
+</script>
